@@ -1,0 +1,46 @@
+.completed-head-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.completed-head {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-left: 1rem;
+    gap: 1.5rem;
+    cursor: pointer;
+}
+
+.completed-head__icon {
+    transition: 250ms;
+}
+
+.completed-head__icon--open {
+    transform: none;
+}
+
+.completed-head__count {
+    color: #797775;
+    font-size: 1.5rem;
+}
+
+.completed-head__text {
+    font-family: Roboto-Medium, sans-serif;
+    font-size: 1.4rem;
+}
+
+.line-wrapper {
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.completed-head__line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(121, 119, 117, 0.3);
+}

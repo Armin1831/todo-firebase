@@ -1,5 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./TodoDetails.css";
+// components
+
 
 // icons
 import { ReactComponent as StarLogo } from "../../assets/images/icons/star-logo.svg";
@@ -26,9 +29,10 @@ import { ReactComponent as YearlyRepaetLogo } from "../../assets/images/icons/ye
 
 
 
+
 const TodoDetails = () => {
   return (
-    <div className="todo-details">
+    <div className="todo-details todo-details--open">
       <div className="container h-100 detail-flex">
         <div className="details-top">
           <div className="task detail-task">
@@ -204,9 +208,11 @@ const TodoDetails = () => {
           </div>
         </div>
         <div className="todo-details__bottom">
-          <span className="todo-details__hide">
-            <HideLogo />
-          </span>
+          <Link to="/tasks/inbox">
+              <span className="todo-details__hide">
+                <HideLogo />
+              </span>
+          </Link>
           <span className="todo-details__date">
             Created on Sat, September 3
           </span>

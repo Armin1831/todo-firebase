@@ -1,5 +1,5 @@
 .sidebar {
-    /*width: 0;*/
+    width: 0;
     flex-shrink: 0;
     overflow: hidden;
     background-color: white;
@@ -23,7 +23,6 @@
 .sidebar-menu {
     margin-bottom: .5rem;
 }
-
 
 
 .sidebar__line {
