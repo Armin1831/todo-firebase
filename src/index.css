@@ -1,6 +1,83 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "assets/styls/fonts.css";
+@import "assets/styls/reset.css";
+@import "assets/styls/grid.css";
+
+:root {
+  font-size: 10px;
+  --primary-color: #0078d7;
+  --bg-secondary: rgb(243, 242, 241);
+  --bg-shadow: rgba(0, 0, 0, 0.1);
 }
 
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem !important;
+  background-color: var(--bg-secondary);
+  font-family: Roboto-Regular, serif;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.all-tasks {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 26.6rem);
+  padding-bottom: 6.5rem;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+.all-tasks::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+.app {
+  display: flex;
+  position: relative;
+  height: calc(100% - 4.8rem);
+}
+
+/* helper classes */
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: inline-block !important;
+}
+
+.p-relative {
+  position: relative !important;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 10%);
+    z-index: -1;
+    opacity: 0;
+    transition: all 200ms ease-in;
+  }
+
+  .cover--show {
+    opacity: 1;
+    z-index: 9;
+  }
+}
