@@ -1,0 +1,54 @@
+.sort-menu {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -3;
+    top: -1.5rem;
+    border-radius: .4rem;
+    padding-top: 1.5rem;
+    right: -1rem;
+    width: 20rem;
+    background-color: white;
+    transition: all 150ms ease-in-out;
+}
+
+.sort-menu--show {
+    height: auto;
+    overflow: visible;
+    z-index: auto;
+    opacity: 1;
+    top: 3.5rem;
+}
+
+.sort-menu__title {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bg-secondary);
+    font-family: Roboto-Medium, sans-serif;
+}
+
+.sort-options {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+
+.sort-options__item {
+    padding: 1rem 0 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.7rem;
+    transition: 100ms;
+    cursor: pointer;
+}
+
+.sort-options__item:hover {
+    background-color: #dddee0;
+}
+
+.sort-options__title {
+    font-family: Roboto-Regular, sans-serif;
+}
+

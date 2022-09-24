@@ -1,0 +1,46 @@
+.details-date-option__title {
+    text-align: center;
+    font-family: Roboto-Medium, sans-serif;
+    padding: 1.5rem 0;
+    font-size: 1.4rem;
+    color: #323130;
+}
+
+.date-option-menu {
+    border-top: 1px solid #e1efdd;
+    border-bottom: 1px solid #e1efdd;
+    padding: .5rem 0;
+}
+
+.date-option-menu__title {
+    font-size: 1.4rem;
+    color: #323130;
+}
+
+.date-option-menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .8rem;
+}
+
+.date-option-menu__item:hover {
+    background-color: #dddee0;
+}
+
+.date-option-menu__lastItem {
+    margin: .4rem 0;
+    padding: .7rem;
+
+}
+
+.date-option-menu__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.date-option-menu__day {
+    font-size: 1.4rem;
+    color: #797775;
+}

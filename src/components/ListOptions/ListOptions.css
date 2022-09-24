@@ -1,0 +1,55 @@
+.list-menu {
+    position: absolute;
+    height: 0;
+    z-index: -2;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 150ms ease-in-out;
+    top: -1rem;
+    width: 20rem;
+    background-color: white;
+    left: -10rem;
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: .5rem;
+}
+
+.list-menu--show {
+    height: auto;
+    opacity: 1;
+    z-index: auto;
+    overflow: visible;
+    top: 3rem;
+}
+
+.list-menu_title {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--bg-secondary);
+    padding-bottom: 1.5rem;
+    cursor: auto;
+    font-family: Roboto-Medium, sans-serif;
+}
+
+.menu-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.menu-option_items {
+    display: flex;
+    padding: 1rem 0 1rem 2rem;
+    transition: 100ms;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-option_items:hover {
+    background-color: #dddee0;
+}
+
+.menu-option_title {
+    margin-right: 1.6rem;
+    font-family: Roboto-Regular, sans-serif;
+}

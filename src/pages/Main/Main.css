@@ -7,18 +7,6 @@
 
 
 
-/* tasks sections*/
-
-
-.tasks {
-    margin-top: 1rem;
-}
-
-.tasks-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
 
 
 

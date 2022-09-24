@@ -17,12 +17,12 @@ import {ReactComponent as NewListLogo} from "../../assets/images/icons/new-list.
 
 
 const Sidebar = () => {
-    const {toggleSidebar, state} = useContext(UiContext);
+    const {uiState, uiStateHandler} = useContext(UiContext);
 
     return (
-        <div className={ state.isLeftSidebarOpen ? "sidebar sidebar--open" : "sidebar"}>
+        <div className={ uiState.isLeftSidebarOpen ? "sidebar sidebar--open" : "sidebar"}>
             <div className="sidebar__head">
-                <span className="sidebar__logo" onClick={() => toggleSidebar()}>
+                <span className="sidebar__logo" onClick={() => uiStateHandler("isLeftSidebarOpen")}>
                   <SidebarLogo/>
                 </span>
             </div>
@@ -37,7 +37,7 @@ const Sidebar = () => {
                     title="Important"
                     path="/tasks/important"
                     count="1"
-                    logo={<StarLogo/>}
+                    logo={<StarLogo style={{color:"#4b4c4d"}}/>}
                 />
                 <SidebarLink
                     title="Planned"
@@ -61,7 +61,7 @@ const Sidebar = () => {
             <div className="line-wrapper sidebar__line">
                 <span className="completed-head__line"/>
             </div>
-            <div className="new-list">
+            <div className="new-list" >
                 <div className="new-list__wrapper">
                   <span className="new-list__new">
                     <PlusLogo/>

@@ -1,19 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {Outlet} from "react-router-dom";
 import "./Main.css";
 
 // components
 import MainHeader from "../../components/MainHeader/MainHeader";
 import NewTask from "../../components/NewTask/NewTask";
-import Task from "../../components/Task/Task";
 import CompletedHead from "../../components/CompletedHead/CompletedHead";
+import TasksList from "../../components/TasksList/TasksList";
 
 
 // icons
 
 
 const Main = () => {
-
+    const [openCompletedTasks, setOpenCompletedTasks] = useState(false)
 
     return (
         <>
@@ -23,18 +23,17 @@ const Main = () => {
                 <div className="all-tasks">
                     <section className="tasks">
                         <div className="container">
-                            <div className="tasks-wrapper">
-                                <Task/>
-                                <Task/>
-                            </div>
+                            <TasksList/>
                         </div>
                     </section>
                     <section className="completed-tasks">
                         <div className="container">
-                            <CompletedHead/>
-                            <div className="tasks-wrapper completed-tasks-wrapper">
-                                <Task/>
-                                <Task/>
+                            <CompletedHead toggleTasks={setOpenCompletedTasks} openCompletedTasks={openCompletedTasks}/>
+                            <div
+                                className={openCompletedTasks ? "completed-tasks-wrapper completed-tasks-wrapper--show"
+                                    : "completed-tasks-wrapper"}
+                            >
+                                <TasksList/>
                             </div>
                         </div>
                     </section>

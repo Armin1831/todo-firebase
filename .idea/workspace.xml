@@ -2,18 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/due-date.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/due-date.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/sort-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/sort-logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/star-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/star-logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar-Link/SidebarLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar-Link/SidebarLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/uiContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/uiContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/uiContext.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TododDetails/TodoDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TododDetails/TodoDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/TododDetails/TodoDetails.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/TododDetails/TodoDetails.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +38,7 @@
         <option value="com.haulmont.rcb.previews" />
         <option value="com.haulmont.rcb.index" />
         <option value="com.haulmont.rcb.useInitial" />
+        <option value="com.haulmont.rcb.arrow_function_component" />
         <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
@@ -39,7 +51,8 @@
     <setting file="file://$PROJECT_DIR$/src/App.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Header/Header.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/context/uiContext.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/context/userContext.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/hooks/useSingIn.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Main/Main.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -62,14 +75,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kelar_rayaneh/Desktop/projects/project-react&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kelar_rayaneh/Desktop/projects/project-react/src/pages/SingIn&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.3\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -83,12 +96,15 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src\pages\SingIn" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src\pages" />
       <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src\assets" />
       <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src\components\Header" />
       <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src\assets\icons" />
       <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src" />
-      <recent name="C:\Users\kelar_rayaneh\Desktop\projects\project-react\src\components\layout" />
     </key>
   </component>
   <component name="RunManager">
@@ -137,6 +153,30 @@
       <workItem from="1663166247214" duration="5621000" />
       <workItem from="1663178205102" duration="4000" />
       <workItem from="1663178251500" duration="6755000" />
+      <workItem from="1663237960694" duration="216000" />
+      <workItem from="1663238225635" duration="251000" />
+      <workItem from="1663238494698" duration="5304000" />
+      <workItem from="1663259772901" duration="1740000" />
+      <workItem from="1663265633780" duration="652000" />
+      <workItem from="1663268941613" duration="1279000" />
+      <workItem from="1663270244146" duration="4413000" />
+      <workItem from="1663324083202" duration="6793000" />
+      <workItem from="1663348949987" duration="5477000" />
+      <workItem from="1663405952422" duration="5033000" />
+      <workItem from="1663438753557" duration="744000" />
+      <workItem from="1663495968762" duration="7527000" />
+      <workItem from="1663772362691" duration="3140000" />
+      <workItem from="1663776018118" duration="1360000" />
+      <workItem from="1663777410466" duration="1331000" />
+      <workItem from="1663837634336" duration="2360000" />
+      <workItem from="1663866711425" duration="3715000" />
+      <workItem from="1663870853515" duration="1877000" />
+      <workItem from="1663873046513" duration="418000" />
+      <workItem from="1663924167960" duration="3768000" />
+      <workItem from="1663928565032" duration="3757000" />
+      <workItem from="1663933722400" duration="1916000" />
+      <workItem from="1664007487079" duration="5496000" />
+      <workItem from="1664021320877" duration="3509000" />
     </task>
     <servers />
   </component>

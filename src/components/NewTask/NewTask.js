@@ -21,20 +21,7 @@ const NewTask = () => {
                             className="new-task-top__input"
                         />
                     </div>
-                    <div className="new-task-bottom">
-                        <div className="new-task-bottom__options">
-                                  <span className="new-task-bottom__icon">
-                                    <CalendarLogo/>
-                                  </span>
-                            <span className="new-task-bottom__icon">
-                                    <ReminderLogo/>
-                                  </span>
-                            <span className="new-task-bottom__icon">
-                                    <RecurringLogo/>
-                                  </span>
-                        </div>
-                        <button className="new-task-bottom__add">Add</button>
-                    </div>
+                    <button className="new-task__add">Add</button>
                 </div>
             </div>
         </section>

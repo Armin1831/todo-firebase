@@ -20,7 +20,7 @@
 }
 
 .completed-head__icon--open {
-    transform: none;
+    transform: rotate(90deg) !important;
 }
 
 .completed-head__count {
