@@ -3,7 +3,7 @@
 @import "assets/styls/grid.css";
 
 :root {
-  font-size: 10px;
+  font-size: 10px !important;
   --primary-color: #0078d7;
   --bg-secondary: rgb(243, 242, 241);
   --bg-shadow: rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@ html {
 body {
   font-size: 1.6rem !important;
   background-color: var(--bg-secondary);
-  font-family: Roboto-Regular, serif;
+  font-family: Roboto-Regular, serif !important;
   margin: 0;
   height: 100%;
   overflow: hidden;

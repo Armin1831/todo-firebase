@@ -5,7 +5,6 @@ function useOutsideHandler(ref, setInformationMenus = null, menu = null, uiState
 
 
     useEffect(() => {
-        console.log("ui state use effect re run")
         function handleClickOutside(event) {
             if (ref.current && !ref.current.contains(event.target)) {
                 if (ref.current.firstChild.classList.contains('list-option') && uiState.isListOptionsOpen) {

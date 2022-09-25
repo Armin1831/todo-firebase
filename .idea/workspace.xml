@@ -2,29 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/due-date.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/due-date.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/sort-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/sort-logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/star-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/star-logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/uiContext.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/userContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/userContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useOutsideHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useOutsideHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useSingIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSingIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TododDetails/TodoDetails.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TododDetails/TodoDetails.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +40,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/App.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Header/Header.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/components/Header/Header.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/context/userContext.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/context/userContext.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/hooks/useSingIn.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Main/Main.js" root0="SKIP_INSPECTION" />
   </component>
@@ -177,6 +168,9 @@
       <workItem from="1663933722400" duration="1916000" />
       <workItem from="1664007487079" duration="5496000" />
       <workItem from="1664021320877" duration="3509000" />
+      <workItem from="1664025877562" duration="6000" />
+      <workItem from="1664028467367" duration="8923000" />
+      <workItem from="1664097025021" duration="2700000" />
     </task>
     <servers />
   </component>

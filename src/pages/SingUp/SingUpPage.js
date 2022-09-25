@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "./SingUpPage.css";
-import useSingIn from "../../hooks/useSingIn";
 import {userContext} from "../../context/userContext";
 import {Link, useNavigate} from "react-router-dom";
+import useSingUp from "../../hooks/useSingUp";
 
 
 const SingUpPage = () => {
@@ -10,7 +10,7 @@ const SingUpPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const {errors, handleSingUp, isPending} = useSingIn(password, email, confirmPassword, userName)
+    const {errors, handleSingUp, isPending} = useSingUp(password, email, confirmPassword, userName)
     const {user} = useContext(userContext);
     const navigate = useNavigate()
 
@@ -27,7 +27,7 @@ const SingUpPage = () => {
 
     return (
         <>
-            <div className="main-w3layouts wrapper" style={{overflowY: "scroll", height: "100%"}}>
+            <div className="main-w3layouts wrapper" style={{overflowY: "scroll", height: "100%",background: "#0078d7"}}>
                 <h1>Sign Up</h1>
                 <div className="main-agileinfo">
                     <div className="agileits-top">

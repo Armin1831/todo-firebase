@@ -9,9 +9,6 @@ import CompletedHead from "../../components/CompletedHead/CompletedHead";
 import TasksList from "../../components/TasksList/TasksList";
 
 
-// icons
-
-
 const Main = () => {
     const [openCompletedTasks, setOpenCompletedTasks] = useState(false)
 

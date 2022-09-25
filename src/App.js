@@ -1,44 +1,54 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./App.css";
 import {BrowserRouter, Navigate, Outlet, Route, Routes} from "react-router-dom";
+import {userContext} from "./context/userContext";
 
 // components
 import Layout from "./components/Layout/Layout";
 import Main from "./pages/Main/Main";
-import TodoDetails from "./pages/TodoDetails/TodoDetails";
 import SingUpPage from "./pages/SingUp/SingUpPage";
 import SingInPage from "./pages/SingIn/SingInPage";
 
 
 function App() {
+    const {user} = useContext(userContext);
+
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<ProtectedRoute/>}>
-                    <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                    <Route path="tasks" element={<Layout/>}>
-                        <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                        <Route path=":tasksList" element={<Main/>}>
-                            <Route path="id">
+        <>
+            {user.authIsReady && (
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<ProtectedRoute user={user.user}/>}>
+                            <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
+                            <Route path="tasks" element={<Layout/>}>
                                 <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                                <Route path=":taskId" element={<TodoDetails/>}/>
+                                <Route path=":tasksList/*" element={<Main/>}/>
                             </Route>
                         </Route>
-                    </Route>
-                </Route>
-                <Route path="sing-up" element={<SingUpPage/>}/>
-                <Route path="sing-in" element={<SingInPage/>}/>
-            </Routes>
-        </BrowserRouter>
+                        <Route path="/" element={<CommonRoute user={user.user}/>}>
+                            <Route path="sing-up" element={<SingUpPage/>}/>
+                            <Route path="sing-in" element={<SingInPage/>}/>
+                        </Route>
+                        <Route path="*" element={<Navigate to="/"/>}/>
+                    </Routes>
+                </BrowserRouter>
+            )}
+        </>
     );
 }
 
 export default App;
 
 
-function ProtectedRoute() {
+function ProtectedRoute({user}) {
 
-    return <Outlet/>
+    return user ? <Outlet/> : <Navigate to="/sing-up" replace/>
+
+}
+
+function CommonRoute({user}) {
+
+    return !user ? <Outlet/> : <Navigate to="/tasks/inbox" replace/>
 
 }
 

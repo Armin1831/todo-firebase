@@ -52,7 +52,7 @@
 .header_right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
 .header_setting {
@@ -72,7 +72,21 @@
     height: 3.5rem;
 }
 
+.logout-button {
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.6rem !important;
+    cursor: pointer;
+    font-family: Roboto-Regular, sans-serif;
+}
 
+.header-link {
+    color: white;
+    font-size: 1.7rem !important;
+    font-family: Roboto-Regular,sans-serif;
+}
 
 /* responsive */
 
