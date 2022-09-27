@@ -5,7 +5,7 @@ import "./CompletedHead.css";
 import {ReactComponent as RightArrowLogo} from "../../assets/images/icons/right-arrow.svg";
 
 
-const CompletedHead = ({toggleTasks, openCompletedTasks}) => {
+const CompletedHead = ({toggleTasks, openCompletedTasks,num}) => {
     const handleToggleTasks = () => {
         toggleTasks((prev) => (!prev))
     }
@@ -17,7 +17,7 @@ const CompletedHead = ({toggleTasks, openCompletedTasks}) => {
                 <RightArrowLogo
                     className={openCompletedTasks ? "completed-head__icon completed-head__icon--open" : "completed-head__icon"}/>
                 <span className="completed-head__text">Completed</span>
-                <span className="completed-head__count">3</span>
+                <span className="completed-head__count">{num}</span>
             </div>
             <div className="line-wrapper completed-tasks__line">
                 <span className="completed-head__line"/>

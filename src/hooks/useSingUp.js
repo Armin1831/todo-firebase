@@ -1,10 +1,10 @@
 import {useContext, useEffect, useRef, useState} from "react";
-import {createUserWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import {auth} from "../firebase/firebase.config";
 import {userContext} from "../context/userContext";
 
 
-const useSingUp = (password, email, confirmPassword , userName ) => {
+const useSingUp = (password, email, confirmPassword, userName) => {
     const [errors, setErrors] = useState({
         userName: undefined,
         email: undefined,
@@ -18,7 +18,7 @@ const useSingUp = (password, email, confirmPassword , userName ) => {
     const isError = useRef(false);
 
     useEffect(() => {
-        const getFormErrors = (password, email, confirmPassword , userName ) => {
+        const getFormErrors = (password, email, confirmPassword, userName) => {
             setErrors({
                 userName: undefined,
                 email: undefined,
@@ -88,6 +88,9 @@ const useSingUp = (password, email, confirmPassword , userName ) => {
         if (!isError.current) {
             try {
                 const res = await createUserWithEmailAndPassword(auth, email, password)
+                await updateProfile(auth.currentUser, {
+                    displayName: userName
+                })
                 setIsPending(false)
                 userComeIn(res.user)
                 alert("you are successfully sing up")

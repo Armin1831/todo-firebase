@@ -19,9 +19,9 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<ProtectedRoute user={user.user}/>}>
-                            <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                            <Route path="tasks" element={<Layout/>}>
-                                <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
+                            <Route index element={<Navigate to="tasks/inbox" replace/>}/>
+                            <Route path="tasks/*" element={<Layout/>}>
+                                <Route index element={<Navigate to="inbox" replace/>}/>
                                 <Route path=":tasksList/*" element={<Main/>}/>
                             </Route>
                         </Route>

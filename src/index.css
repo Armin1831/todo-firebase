@@ -30,7 +30,7 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   height: calc(100% - 11.6rem);
-  padding-bottom: 6.5rem;
+  padding-bottom: 7.5rem;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
 }

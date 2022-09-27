@@ -1,13 +1,38 @@
-import React from 'react';
-
+import React, {useContext, useState} from 'react';
+import {Timestamp} from "firebase/firestore";
+import useDocument from "../../hooks/useDocument";
+import {userContext} from "../../context/userContext";
 import "./NewTask.css"
+
 //icons
 import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.svg";
-import {ReactComponent as CalendarLogo} from "../../assets/images/icons/calendar-logo.svg";
-import {ReactComponent as ReminderLogo} from "../../assets/images/icons/reminder-logo.svg";
-import {ReactComponent as RecurringLogo} from "../../assets/images/icons/recurring-logo.svg";
+
 
 const NewTask = () => {
+    const [task, setTask] = useState("");
+    const {user: {user}} = useContext(userContext);
+    const {createDocument} = useDocument("tasks");
+    const addNewTask = async () => {
+        if (task !== "") {
+            const taskData = {
+                text: task,
+                constructionTime: new Date().getTime(),
+                userCreator: user.uid,
+                isCompleted: false,
+                isImportant: false,
+                isInMyDay: false,
+                lists: [],
+                reminder: Timestamp.fromDate(new Date("December 10, 1815")),
+                dueDate: Timestamp.fromDate(new Date("December 10, 1815")),
+                repeat: "",
+                category: [],
+                node: ""
+            }
+            setTask("")
+            await createDocument(taskData)
+        }
+    }
+
     return (
         <section className="new-task">
             <div className="container">
@@ -19,9 +44,16 @@ const NewTask = () => {
                             type="text"
                             placeholder="Add a task"
                             className="new-task-top__input"
+                            value={task}
+                            onKeyDown={(e) => e.key === "Enter" && addNewTask()}
+                            onChange={(e) => setTask(e.target.value)}
                         />
                     </div>
-                    <button className="new-task__add">Add</button>
+                    <button className="new-task__add"
+                            onClick={() => addNewTask()}
+                    >
+                        Add
+                    </button>
                 </div>
             </div>
         </section>

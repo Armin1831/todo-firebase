@@ -4,18 +4,16 @@
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/userContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/userContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useOutsideHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useOutsideHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useSingIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSingIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase/firebase.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase/firebase.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useSingUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSingUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingIn/SingInPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingUp/SingUpPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +42,7 @@
     <setting file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/context/userContext.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/hooks/useSingIn.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Main/Main.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Main/Main.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -171,6 +169,13 @@
       <workItem from="1664025877562" duration="6000" />
       <workItem from="1664028467367" duration="8923000" />
       <workItem from="1664097025021" duration="2700000" />
+      <workItem from="1664131323019" duration="545000" />
+      <workItem from="1664131895040" duration="224000" />
+      <workItem from="1664132135038" duration="345000" />
+      <workItem from="1664185050661" duration="2811000" />
+      <workItem from="1664206963382" duration="7938000" />
+      <workItem from="1664216932737" duration="4656000" />
+      <workItem from="1664275639920" duration="3175000" />
     </task>
     <servers />
   </component>

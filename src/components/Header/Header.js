@@ -16,7 +16,6 @@ const Header = () => {
     const handleLogout = async () => {
         await handleSingOut()
     }
-
     return (
         <header className="header">
             <h1 className="header_title">ToDo</h1>
@@ -46,7 +45,7 @@ const Header = () => {
                         <button onClick={handleLogout}
                                 className="logout-button">{isPending ? "is pending" : "logout"}</button>
                         <div className="profile">
-                            <span className="profile_content">AA</span>
+                            <span className="profile_content">{user.displayName.toUpperCase().slice(0,2)}</span>
                         </div>
                     </>
                 ) : (
