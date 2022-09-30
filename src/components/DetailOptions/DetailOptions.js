@@ -92,7 +92,6 @@ const detailOptionMenu = [
 
 
 const DetailOptions = () => {
-
     const [informationMenus, setInformationMenus] = useState({
         ReminderMenu: false,
         RepeatMenu: false,

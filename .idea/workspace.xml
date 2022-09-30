@@ -3,21 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DetailOptions/DetailOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailOptions/DetailOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewStep/NewStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewStep/NewStep.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar-Link/SidebarLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar-Link/SidebarLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/userContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/userContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCollection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useDocument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TodoInformatioin/TodoInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoInformatioin/TodoInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFirestore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +24,8 @@
         <option value="com.haulmont.rcb.index" />
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.arrow_function_component" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -191,6 +182,7 @@
       <workItem from="1664443405126" duration="12952000" />
       <workItem from="1664473029337" duration="3809000" />
       <workItem from="1664477248333" duration="667000" />
+      <workItem from="1664560231436" duration="5065000" />
     </task>
     <servers />
   </component>

@@ -12,13 +12,13 @@ import DetailOptions from "../DetailOptions/DetailOptions";
 
 
 
-const TodoInformation = () => {
+const TodoInformation = ({task}) => {
 
 
 
     return (
         <div className="details-wrapper">
-            <NewStep/>
+            <NewStep task={task}/>
             <DetailAddToDay/>
             <DetailOptions/>
             <DetailCategory/>

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Timestamp} from "firebase/firestore";
-import useDocument from "../../hooks/useDocument";
+import useFirestore from "../../hooks/useFirestore";
 import {userContext} from "../../context/userContext";
 import "./NewTask.css"
 
@@ -11,7 +11,7 @@ import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.sv
 const NewTask = ({list}) => {
     const [task, setTask] = useState("");
     const {user: {user}} = useContext(userContext);
-    const {createDocument} = useDocument("tasks");
+    const {createDocument} = useFirestore("tasks");
 
 
     const addNewTask = async () => {
@@ -24,11 +24,12 @@ const NewTask = ({list}) => {
                 isImportant: list === "important",
                 isInMyDay: list === "my_day",
                 lists: list === "inbox" ? ["inbox"] : [list, "inbox"],
-                reminder: Timestamp.fromDate(new Date("December 10, 1815")),
-                dueDate: Timestamp.fromDate(new Date("December 10, 1815")),
+                reminder: Timestamp.fromDate(new Date()),
+                dueDate: Timestamp.fromDate(new Date()),
                 repeat: "",
                 category: [],
-                node: ""
+                note: "",
+                steps: []
             }
             setTask("")
             await createDocument(taskData)

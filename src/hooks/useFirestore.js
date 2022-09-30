@@ -1,7 +1,7 @@
 import {db} from "../firebase/firebase.config";
 import {addDoc, collection, doc, updateDoc,deleteDoc } from "firebase/firestore";
 
-const useDocument = (collectionName) => {
+const useFirestore = (collectionName) => {
     const collRef = collection(db, collectionName)
 
     const createDocument = async (document) => {
@@ -35,4 +35,4 @@ const useDocument = (collectionName) => {
 }
 
 
-export default useDocument;
+export default useFirestore;

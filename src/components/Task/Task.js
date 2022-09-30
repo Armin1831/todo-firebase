@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Task.css";
 import {arrayRemove, arrayUnion} from "firebase/firestore"
-import useDocument from "../../hooks/useDocument";
+import useFirestore from "../../hooks/useFirestore";
 
 // icons
 import {ReactComponent as DoneLogo} from "../../assets/images/icons/done-svgrepo-com.svg";
@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 
 
 const Task = ({className, task}) => {
-    const {updateDocument} = useDocument("tasks");
+    const {updateDocument} = useFirestore("tasks");
 
     const completeTask = async (task) => {
         await updateDocument(task.id, {
