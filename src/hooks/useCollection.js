@@ -2,7 +2,9 @@ import {useEffect, useState, useRef} from "react";
 import {db} from "../firebase/firebase.config";
 import {collection, query, where, onSnapshot, orderBy} from "firebase/firestore";
 
-const useCollection = (collectionName, _queryWhere, _orderByWhat) => {
+
+
+const useCollection = (collectionName, _queryWhere = null, _orderByWhat = null) => {
     const [docs, setDocs] = useState([]);
     const [error, setError] = useState("");
 
@@ -12,7 +14,14 @@ const useCollection = (collectionName, _queryWhere, _orderByWhat) => {
 
     useEffect(() => {
         const collRef = collection(db, collectionName)
-        const q = query(collRef, where(...queryWhere), orderBy(...orderByWhat));
+        let q ;
+        if (queryWhere) {
+            q = query(collRef, where(...queryWhere))
+        }
+        if (orderByWhat) {
+            q = query(collRef,where(...queryWhere), orderBy(...orderByWhat))
+        }
+
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
@@ -30,7 +39,7 @@ const useCollection = (collectionName, _queryWhere, _orderByWhat) => {
 
         return () => unsubscribe()
 
-    }, [collectionName, queryWhere, orderByWhat]);
+    }, [collectionName, orderByWhat, queryWhere]);
 
     return {docs, error}
 }

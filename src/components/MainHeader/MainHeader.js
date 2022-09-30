@@ -1,18 +1,18 @@
 import React, {useContext} from 'react';
+import {UiContext} from "../../context/uiContext";
 import "./MainHeader.css"
 
 // components
 import OutsideHandler from "../../hooks/useOutsideHandler";
 
 // icons
-import {ReactComponent as SidebarLogo} from "../../assets/images/icons/sidebar-logo.svg";
 import {ReactComponent as SortLogo} from "../../assets/images/icons/sort-logo.svg";
 import ListOptions from "../ListOptions/ListOptions";
 import SortOptions from "../SortOptions/SortOptions";
-import {UiContext} from "../../context/uiContext";
 
 
-const MainHeader = () => {
+
+const MainHeader = ({name, logo: Logo}) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
     return (
         <section className="todo-header">
@@ -20,9 +20,9 @@ const MainHeader = () => {
                 <div className="main-header">
                     <div className="main-header_left">
                         <span className="main-header_menu-logo" onClick={() => uiStateHandler("isLeftSidebarOpen")}>
-                            <SidebarLogo/>
+                            <Logo style={{color:"#3f3e3e",width:"24px",height:"24px"}}/>
                         </span>
-                        <h2 className="main-header_title">Tasks</h2>
+                        <h2 className="main-header_title">{name}</h2>
                         <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
                             <div className="list-option">
                                 <div className="logo-wrapper"

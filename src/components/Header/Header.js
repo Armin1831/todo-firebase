@@ -1,11 +1,13 @@
 import React, {useContext, useRef, useState} from "react";
+import {userContext} from "../../context/userContext";
+import useSingOut from "../../hooks/useSingOut";
 import {Link} from "react-router-dom";
 import "./Header.css";
 
+// icons
 import {ReactComponent as SearchLogo} from "../../assets/images/icons/search-logo.svg";
 import {ReactComponent as CloseLogo} from "../../assets/images/icons/close-logo.svg";
-import {userContext} from "../../context/userContext";
-import useSingOut from "../../hooks/useSingOut";
+
 
 const Header = () => {
     const [openSearch, setOpenSearch] = useState(false);

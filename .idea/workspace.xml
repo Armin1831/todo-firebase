@@ -4,16 +4,21 @@
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CompletedHead/CompletedHead.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar-Link/SidebarLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar-Link/SidebarLink.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/firebase/firebase.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase/firebase.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useSingUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSingUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/userContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/userContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useCollection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCollection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useDocument.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +33,8 @@
         <option value="com.haulmont.rcb.index" />
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.arrow_function_component" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -72,7 +77,7 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.3\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.2.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -176,6 +181,16 @@
       <workItem from="1664206963382" duration="7938000" />
       <workItem from="1664216932737" duration="4656000" />
       <workItem from="1664275639920" duration="3175000" />
+      <workItem from="1664285391516" duration="7153000" />
+      <workItem from="1664292842523" duration="1060000" />
+      <workItem from="1664304897410" duration="3846000" />
+      <workItem from="1664310096458" duration="5277000" />
+      <workItem from="1664351318662" duration="8646000" />
+      <workItem from="1664367878087" duration="915000" />
+      <workItem from="1664390677612" duration="5327000" />
+      <workItem from="1664443405126" duration="12952000" />
+      <workItem from="1664473029337" duration="3809000" />
+      <workItem from="1664477248333" duration="667000" />
     </task>
     <servers />
   </component>

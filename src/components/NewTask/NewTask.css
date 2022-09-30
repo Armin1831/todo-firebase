@@ -26,8 +26,8 @@
 
 .new-task-top__circle {
     display: block;
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 1.6rem;
+    height: 1.6rem;
     border-radius: 100%;
     flex-shrink: 0;
     border: 1px solid var(--primary-color);

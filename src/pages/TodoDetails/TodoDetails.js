@@ -1,5 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import useDocument from "../../hooks/useDocument";
 import "./TodoDetails.css";
 
 // components
@@ -12,7 +13,14 @@ import {ReactComponent as DeleteLogo} from "../../assets/images/icons/delete-log
 
 
 const TodoDetails = () => {
+    const navigate = useNavigate();
+    const {taskId} = useParams();
+    const {deleteDocument} = useDocument("tasks");
 
+    const handleDeleteTodo = async (id) => {
+        await deleteDocument(id)
+        navigate(-1)
+    }
     return (
         <div className="todo-details">
             <div className="container h-100 detail-flex">
@@ -21,15 +29,15 @@ const TodoDetails = () => {
                     <TodoInformation/>
                 </div>
                 <div className="todo-details__bottom">
-                    <Link to="/tasks/inbox">
-                        <span className="todo-details__hide">
-                            <HideLogo/>
-                        </span>
-                    </Link>
+                    <span className="todo-details__hide"
+                          onClick={() => navigate(-1)}
+                    >
+                        <HideLogo/>
+                    </span>
                     <span className="todo-details__date">
                         Created By Armin Aboutalebi
                     </span>
-                    <span className="todo-details__delete">
+                    <span className="todo-details__delete" onClick={() => handleDeleteTodo(taskId)}>
                         <DeleteLogo/>
                     </span>
                 </div>

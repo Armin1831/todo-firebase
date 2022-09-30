@@ -1,6 +1,7 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {auth} from "../firebase/firebase.config";
 import {onAuthStateChanged} from "firebase/auth";
+import Spinner from "../components/Spinner/Spinner";
 
 
 export const userContext = createContext({
@@ -10,6 +11,8 @@ export const userContext = createContext({
     },
     userComeIn: (user) => {
         return user;
+    },
+    userComeOut: () => {
     }
 });
 
@@ -47,13 +50,19 @@ const useUserContext = ({children}) => {
                 }
             })
             unSub()
+        },error => {
+            console.log(error)
         });
     }, []);
     return (
         <userContext.Provider
             value={{user, userComeIn, userComeOut}}
         >
-            {children}
+            {user.authIsReady ?
+                <>
+                    {children}
+                </> : <Spinner/>
+            }
         </userContext.Provider>
     );
 };

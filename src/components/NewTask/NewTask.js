@@ -8,10 +8,12 @@ import "./NewTask.css"
 import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.svg";
 
 
-const NewTask = () => {
+const NewTask = ({list}) => {
     const [task, setTask] = useState("");
     const {user: {user}} = useContext(userContext);
     const {createDocument} = useDocument("tasks");
+
+
     const addNewTask = async () => {
         if (task !== "") {
             const taskData = {
@@ -19,9 +21,9 @@ const NewTask = () => {
                 constructionTime: new Date().getTime(),
                 userCreator: user.uid,
                 isCompleted: false,
-                isImportant: false,
-                isInMyDay: false,
-                lists: [],
+                isImportant: list === "important",
+                isInMyDay: list === "my_day",
+                lists: list === "inbox" ? ["inbox"] : [list, "inbox"],
                 reminder: Timestamp.fromDate(new Date("December 10, 1815")),
                 dueDate: Timestamp.fromDate(new Date("December 10, 1815")),
                 repeat: "",

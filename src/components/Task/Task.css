@@ -1,11 +1,13 @@
 .task {
     display: flex;
+    overflow: hidden !important;
     background-color: white;
-    padding: 1.6rem 2rem;
+    padding: 0 2rem;
     border-radius: .6rem;
     box-shadow: 0 0.3px 0.9px var(--bg-shadow), 0 1.6px 3.6px var(--bg-shadow);
     transition: background-color 150ms;
     cursor: pointer;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -15,7 +17,8 @@
 
 .task__content {
     width: 100%;
-    margin: 0 2rem;
+    height: 100%;
+    padding: 2rem 2rem;
     font-family: Roboto-Regular, sans-serif;
     font-size: 1.4rem;
     color: #323130;

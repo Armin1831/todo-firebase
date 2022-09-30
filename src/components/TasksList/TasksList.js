@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import "./TasksList.css";
 
 // components
@@ -12,9 +11,7 @@ const TasksList = ({tasks}) => {
         <div className="tasks-wrapper">
             {tasks.map((task) => {
                 return (
-                    <Link to={`/tasks/id/${task.id}`}>
-                        <Task key={task.id} task={task}/>
-                    </Link>
+                    <Task task={task} key={task.id}/>
                 )
             })}
         </div>
