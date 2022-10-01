@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 45.3rem;
+    margin-top: -1rem;
     gap: 1rem;
     padding-bottom: 1rem;
     overflow-x: hidden;
@@ -52,4 +53,8 @@
     z-index: 10;
 }
 
-
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+}

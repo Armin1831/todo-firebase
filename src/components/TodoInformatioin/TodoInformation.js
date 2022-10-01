@@ -16,10 +16,12 @@ const TodoInformation = ({task}) => {
 
     return (
         <div className="details-wrapper">
-            <StepList id={task.id} steps={task.steps}/>
-            <NewStep task={task}/>
-            <DetailAddToDay/>
-            <DetailOptions/>
+            <div className="steps">
+                <StepList id={task.id} steps={task.steps}/>
+                <NewStep task={task}/>
+            </div>
+            <DetailAddToDay task={task}/>
+            <DetailOptions task={task}/>
             <DetailCategory/>
             <DetailsAddFile/>
             <DetailAddNote/>

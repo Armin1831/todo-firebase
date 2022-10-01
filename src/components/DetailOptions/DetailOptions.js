@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import "./DetailOptions.css";
+import useFirestore from "../../hooks/useFirestore";
+import {Timestamp, arrayUnion} from "firebase/firestore";
 import OutsideHandler from "../../hooks/useOutsideHandler";
-import {days} from "../../utils";
+import MyDate from "../../utils/MyDate";
 
 // components
 import DetailOptionHead from "../DetailsOptionHead/DetailOptionHead";
+import DetailOptionMenu from "../DetailOptionMenu/DetailOptionMenu";
 
 // icons
 import {ReactComponent as ReminderLogo} from "../../assets/images/icons/reminder-logo.svg";
@@ -21,22 +24,14 @@ import {ReactComponent as WeekdaysRepeatLogo} from "../../assets/images/icons/we
 import {ReactComponent as WeeklyRepeatLogo} from "../../assets/images/icons/weekly-repaet.svg";
 import {ReactComponent as MonthlyRepeatLogo} from "../../assets/images/icons/monthly-repaet.svg";
 import {ReactComponent as YearlyRepaetLogo} from "../../assets/images/icons/yearly-repaet.svg";
-import DetailOptionMenu from "../DetailOptionMenu/DetailOptionMenu";
 
 
-const now = new Date();
-const today = now.getDay() - 1
-const hours = now.getHours();
-const hours1 = now.getHours() + 5;
-const minutes = now.getMinutes();
-const ampm = hours >= 12 ? 'PM' : 'AM';
-const ampm1 = hours1 >= 12 ? 'PM' : 'AM';
-const getToday = (today, isTomorrow = false) => {
-    if(isTomorrow){
-        return today === -1 ? days[0] : days[today + 1]
-    }
-    return today === -1 ? days[6] : days[today]
-}
+const myDate = new MyDate()
+const laterHours = myDate.getLaterHours()
+const tomorrow = myDate.getTomorrow()
+const nextWeek = myDate.getNextWeek()
+
+
 const detailOptionMenu = [
     {
         title: "Reminder",
@@ -44,17 +39,26 @@ const detailOptionMenu = [
             {
                 title: "Later today",
                 logo: <LaterTodayLogo/>,
-                value: `${hours + 5}:${minutes} ${ampm1}`
+                timeObject: laterHours.value,
+                value: `${laterHours.title > 12 ?
+                    laterHours.title - 12 : laterHours.title === 0 ? 12 : laterHours.title}:00 
+                ${laterHours.title >= 12 ? 'PM' : 'AM'}`
             },
             {
                 title: "Tomorrow",
                 logo: <TomorrowLogo/>,
-                value: `${getToday(today,true).slice(0, 3)}, ${now.getHours()} ${ampm}`
+                timeObject: tomorrow.value,
+                value: `${tomorrow.title.slice(0, 3)}, ${tomorrow.value.getHours() > 12 ?
+                    tomorrow.value.getHours() - 12 : tomorrow.value.getHours() === 0 ? 12 : tomorrow.value.getHours()} 
+                    ${tomorrow.value.getHours() >= 12 ? 'PM' : 'AM'}`
             },
             {
                 title: "Next week",
                 logo: <NextWeekLogo/>,
-                value: `${days[0].slice(0, 3)}, ${now.getHours()} ${ampm}`
+                timeObject: nextWeek.value,
+                value: `${nextWeek.title.slice(0, 3)}, ${nextWeek.value.getHours() > 12 ?
+                    nextWeek.value.getHours() - 12 : nextWeek.value.getHours() === 0 ? 12 : nextWeek.value.getHours()} 
+                ${nextWeek.value.getHours() >= 12 ? 'PM' : 'AM'}`
             }
         ]
     },
@@ -64,17 +68,20 @@ const detailOptionMenu = [
             {
                 title: "Today",
                 logo: <TodayCalendarLogo/>,
-                value: `${getToday(today).slice(0, 3)}`
+                timeObject: myDate.date,
+                value: myDate.today.slice(0, 3)
             },
             {
                 title: "Tomorrow",
                 logo: <TomorrowClendarLogo/>,
-                value: `${getToday(today,true).slice(0, 3)}`
+                timeObject: tomorrow.value,
+                value: tomorrow.title.slice(0, 3)
             },
             {
                 title: "Next week",
                 logo: <NextWeeksLogo/>,
-                value: days[0].slice(0, 3)
+                timeObject: nextWeek.value,
+                value: nextWeek.title.slice(0, 3)
             }
         ]
     },
@@ -106,7 +113,8 @@ const detailOptionMenu = [
 ]
 
 
-const DetailOptions = () => {
+const DetailOptions = ({task}) => {
+    const {updateDocument} = useFirestore("tasks")
     const [informationMenus, setInformationMenus] = useState({
         ReminderMenu: false,
         RepeatMenu: false,
@@ -120,7 +128,28 @@ const DetailOptions = () => {
             [e]: !informationMenus[e]
         })
     }
-
+    const updateSomeDates = (title) => async (timeObject) => {
+        switch (title) {
+            case "Reminder":
+                await updateDocument(task.id, {
+                    reminder: Timestamp.fromDate(timeObject)
+                })
+                break;
+            case "Due":
+                await updateDocument(task.id, {
+                    dueDate: Timestamp.fromDate(timeObject),
+                    lists: task.lists.includes("planned") ? task.lists : arrayUnion("planned")
+                })
+                break;
+            case "Repeat":
+                await updateDocument(task.id, {
+                    repeat: timeObject
+                })
+                break;
+            default:
+                break;
+        }
+    }
     return (
         <div className="options">
             <div className="details-option p-relative">
@@ -137,6 +166,7 @@ const DetailOptions = () => {
                         <DetailOptionMenu
                             title={detailOptionMenu[0].title}
                             menuOptions={detailOptionMenu[0].options}
+                            updateSomeDates={updateSomeDates("Reminder")}
                         />
                     </div>
                 </OutsideHandler>
@@ -155,6 +185,7 @@ const DetailOptions = () => {
                         <DetailOptionMenu
                             title={detailOptionMenu[1].title}
                             menuOptions={detailOptionMenu[1].options}
+                            updateSomeDates={updateSomeDates("Due")}
                         />
                     </div>
                 </OutsideHandler>
@@ -175,6 +206,7 @@ const DetailOptions = () => {
                         <DetailOptionMenu
                             title={detailOptionMenu[2].title}
                             menuOptions={detailOptionMenu[2].options}
+                            updateSomeDates={updateSomeDates("Repeat")}
                         />
                     </div>
                 </OutsideHandler>

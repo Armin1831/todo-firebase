@@ -40,7 +40,7 @@ const TodoDetails = ({path}) => {
                             <HideLogo/>
                         </span>
                         <span className="todo-details__date">
-                            {new Date(data.constructionTime).toDateString()}
+                            Created At {new Date(data.constructionTime).toDateString()}
                         </span>
                         <span className="todo-details__delete" onClick={() => handleDeleteTodo(taskId)}>
                             <DeleteLogo/>

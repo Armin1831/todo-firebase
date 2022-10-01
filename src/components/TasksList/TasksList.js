@@ -7,7 +7,6 @@ import Task from "../Task/Task";
 
 const TasksList = ({tasks}) => {
     return (
-
         <div className="tasks-wrapper">
             {tasks.map((task) => {
                 return (

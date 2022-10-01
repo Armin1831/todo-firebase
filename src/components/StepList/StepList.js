@@ -1,6 +1,6 @@
 import React from 'react';
 import useFirestore from "../../hooks/useFirestore";
-
+import "./StepList.css"
 // components
 import Step from "../Step/Step";
 

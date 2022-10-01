@@ -1,26 +1,43 @@
-.task {
+.step {
     display: flex;
-    overflow: hidden !important;
+    flex-direction: column;
     background-color: white;
     padding: 0 2rem;
-    border-radius: .6rem;
     box-shadow: 0 0.3px 0.9px var(--bg-shadow), 0 1.6px 3.6px var(--bg-shadow);
     transition: background-color 150ms;
-    cursor: pointer;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
 }
 
-.task:hover {
+.step:hover {
     background-color: var(--bg-secondary);
 }
+.step__info{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
 
-.task__content {
+.step__content {
     width: 100%;
     height: 100%;
     padding: 2rem 2rem;
     font-family: Roboto-Regular, sans-serif;
     font-size: 1.4rem;
     color: #323130;
+}
+
+.step__line{
+    display: block;
+    background-color: #b2b2b2;
+    margin-left: auto;
+    width: 90%;
+    height: .1rem;
+}
+
+.task__isImportant{
+    cursor: pointer;
 }
