@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./DetailOptions.css";
 import OutsideHandler from "../../hooks/useOutsideHandler";
+import {days} from "../../utils";
 
 // components
 import DetailOptionHead from "../DetailsOptionHead/DetailOptionHead";
@@ -22,6 +23,20 @@ import {ReactComponent as MonthlyRepeatLogo} from "../../assets/images/icons/mon
 import {ReactComponent as YearlyRepaetLogo} from "../../assets/images/icons/yearly-repaet.svg";
 import DetailOptionMenu from "../DetailOptionMenu/DetailOptionMenu";
 
+
+const now = new Date();
+const today = now.getDay() - 1
+const hours = now.getHours();
+const hours1 = now.getHours() + 5;
+const minutes = now.getMinutes();
+const ampm = hours >= 12 ? 'PM' : 'AM';
+const ampm1 = hours1 >= 12 ? 'PM' : 'AM';
+const getToday = (today, isTomorrow = false) => {
+    if(isTomorrow){
+        return today === -1 ? days[0] : days[today + 1]
+    }
+    return today === -1 ? days[6] : days[today]
+}
 const detailOptionMenu = [
     {
         title: "Reminder",
@@ -29,17 +44,17 @@ const detailOptionMenu = [
             {
                 title: "Later today",
                 logo: <LaterTodayLogo/>,
-                value: "5:00 PM"
+                value: `${hours + 5}:${minutes} ${ampm1}`
             },
             {
                 title: "Tomorrow",
                 logo: <TomorrowLogo/>,
-                value: "Fri, 9 AM"
+                value: `${getToday(today,true).slice(0, 3)}, ${now.getHours()} ${ampm}`
             },
             {
                 title: "Next week",
                 logo: <NextWeekLogo/>,
-                value: "Mon, 9 AM"
+                value: `${days[0].slice(0, 3)}, ${now.getHours()} ${ampm}`
             }
         ]
     },
@@ -49,17 +64,17 @@ const detailOptionMenu = [
             {
                 title: "Today",
                 logo: <TodayCalendarLogo/>,
-                value: "Thu"
+                value: `${getToday(today).slice(0, 3)}`
             },
             {
                 title: "Tomorrow",
                 logo: <TomorrowClendarLogo/>,
-                value: "Fri"
+                value: `${getToday(today,true).slice(0, 3)}`
             },
             {
                 title: "Next week",
                 logo: <NextWeeksLogo/>,
-                value: "Mon"
+                value: days[0].slice(0, 3)
             }
         ]
     },

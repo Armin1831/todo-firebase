@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Timestamp} from "firebase/firestore";
 import "./NewStep.css"
 import useFirestore from "../../hooks/useFirestore";
 
@@ -15,7 +14,7 @@ const NewStep = ({task}) => {
             setStep("")
             await updateDocument(task.id, {
                 steps: [...task.steps, {
-                    createdAt: Timestamp.fromDate(new Date()),
+                    createdAt: new Date().getTime(),
                     text: step,
                     isCompleted: false
                 }]

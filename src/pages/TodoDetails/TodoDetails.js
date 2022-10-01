@@ -13,20 +13,20 @@ import {ReactComponent as DeleteLogo} from "../../assets/images/icons/delete-log
 import useDocument from "../../hooks/useDocument";
 
 
-const TodoDetails = () => {
+const TodoDetails = ({path}) => {
     const navigate = useNavigate();
     const {taskId} = useParams();
     const {data, error} = useDocument("tasks", taskId)
     const {deleteDocument} = useFirestore("tasks");
 
     const handleDeleteTodo = async (id) => {
-        navigate(-1)
+        navigate(path)
         await deleteDocument(id)
     }
 
     return (
         <div className="todo-details">
-            {/*{error && <div>{error}</div>}*/}
+            {error && <div className="error">{error}</div>}
             {data &&
                 <div className="container h-100 detail-flex">
                     <div className="details-top">
@@ -35,7 +35,7 @@ const TodoDetails = () => {
                     </div>
                     <div className="todo-details__bottom">
                         <span className="todo-details__hide"
-                              onClick={() => navigate(-1)}
+                              onClick={() => navigate(path)}
                         >
                             <HideLogo/>
                         </span>

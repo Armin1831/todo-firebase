@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/close-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/close-logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DetailOptions/DetailOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailOptions/DetailOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NewStep/NewStep.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewStep/NewStep.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TodoInformatioin/TodoInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TodoInformatioin/TodoInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useFirestore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +23,8 @@
         <option value="com.haulmont.rcb.index" />
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.arrow_function_component" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -183,6 +182,7 @@
       <workItem from="1664473029337" duration="3809000" />
       <workItem from="1664477248333" duration="667000" />
       <workItem from="1664560231436" duration="5065000" />
+      <workItem from="1664605361920" duration="9695000" />
     </task>
     <servers />
   </component>

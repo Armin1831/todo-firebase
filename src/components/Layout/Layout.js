@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {Navigate, Outlet, Route, Routes, useLocation, useNavigate} from 'react-router-dom'
 import {UiContext} from "../../context/uiContext";
 
@@ -11,6 +11,8 @@ const Layout = () => {
     const {uiState, uiStateHandler} = useContext(UiContext);
     const location = useLocation()
     const navigate = useNavigate()
+    const tasksListRef = useRef(location.pathname);
+
     const handleCoverClick = (e) => {
         if (e.target.classList.contains("cover--show")) {
             if (uiState.isLeftSidebarOpen) {
@@ -21,6 +23,14 @@ const Layout = () => {
             }
         }
     }
+
+
+    useEffect(() => {
+        if (!location.pathname.includes("id")) {
+            tasksListRef.current = location.pathname
+        }
+    }, [location.pathname]);
+
     return (
         <>
             <Header/>
@@ -30,7 +40,7 @@ const Layout = () => {
                 <Routes>
                     <Route path="id">
                         <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                        <Route path=":taskId" element={<TodoDetails/>}/>
+                        <Route path=":taskId" element={<TodoDetails path={tasksListRef.current}/>}/>
                     </Route>
                 </Routes>
                 <div
