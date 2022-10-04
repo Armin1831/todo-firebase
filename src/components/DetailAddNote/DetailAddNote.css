@@ -1,6 +1,7 @@
 
 .add-note {
     height: 8rem;
+    position: relative;
     background-color: white;
     flex-shrink: 0;
     border-radius: .6rem;
@@ -19,4 +20,16 @@
 
 .add-note__textarea::placeholder {
     font-size: 1.6rem;
+}
+
+.add-note__button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background-color: white;
+    cursor: pointer;
+    font-family: Roboto-Medium, sans-serif;
+    border: none;
+    outline: none;
+    color: var(--primary-color);
 }

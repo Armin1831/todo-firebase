@@ -37,3 +37,21 @@
     left: 0;
     cursor: pointer;
 }
+
+.download {
+    display: flex;
+    background-color: white;
+    padding: 1.6rem 2rem;
+    border-radius: 0.6rem;
+    justify-content: space-between;
+    transition: background-color 150ms;
+    align-items: center;
+}
+
+.add-file__download {
+    margin-left: 2rem;
+    margin-right: auto;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 1.4rem;
+    color: #797775;
+}

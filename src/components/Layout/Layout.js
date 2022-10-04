@@ -6,6 +6,8 @@ import {UiContext} from "../../context/uiContext";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import TodoDetails from "../../pages/TodoDetails/TodoDetails";
+import TaskContext from "../../context/taskContext";
+
 
 const Layout = () => {
     const {uiState, uiStateHandler} = useContext(UiContext);
@@ -40,7 +42,9 @@ const Layout = () => {
                 <Routes>
                     <Route path="id">
                         <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                        <Route path=":taskId" element={<TodoDetails path={tasksListRef.current}/>}/>
+                        <Route path=":taskId" element={<TaskContext/>}>
+                            <Route index element={<TodoDetails path={tasksListRef.current}/>}/>
+                        </Route>
                     </Route>
                 </Routes>
                 <div

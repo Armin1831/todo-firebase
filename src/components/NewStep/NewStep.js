@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {taskContext} from "../../context/taskContext";
 import "./NewStep.css"
 import useFirestore from "../../hooks/useFirestore";
 
@@ -6,9 +7,11 @@ import useFirestore from "../../hooks/useFirestore";
 import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.svg";
 
 
-const NewStep = ({task}) => {
+const NewStep = () => {
+    const {task} = useContext(taskContext)
     const [step, setStep] = useState("");
     const {updateDocument} = useFirestore("tasks");
+
     const addNewStep = async () => {
         if (step !== "") {
             setStep("")
@@ -21,6 +24,7 @@ const NewStep = ({task}) => {
             })
         }
     }
+
     return (
         <div className="new-task-top new-step">
             <PlusLogo onClick={() => addNewStep()}/>

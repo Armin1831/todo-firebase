@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {taskContext} from "../../context/taskContext";
 import {arrayRemove, arrayUnion} from "firebase/firestore";
 import useFirestore from "../../hooks/useFirestore";
 import "./DetailAddToDay.css";
@@ -8,7 +9,8 @@ import {ReactComponent as SunLogo} from "../../assets/images/icons/sun-logo.svg"
 import {ReactComponent as CloseLogo} from "../../assets/images/icons/close-logo.svg";
 
 
-const DetailAddToDay = ({task}) => {
+const DetailAddToDay = () => {
+    const {task} = useContext(taskContext)
     const {updateDocument} = useFirestore("tasks");
 
     const addToMyDay = async () => {

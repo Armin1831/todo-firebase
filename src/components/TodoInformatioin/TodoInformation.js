@@ -11,17 +11,17 @@ import DetailOptions from "../DetailOptions/DetailOptions";
 import StepList from "../StepList/StepList";
 
 
-const TodoInformation = ({task}) => {
 
+const TodoInformation = () => {
 
     return (
         <div className="details-wrapper">
             <div className="steps">
-                <StepList id={task.id} steps={task.steps}/>
-                <NewStep task={task}/>
+                <StepList/>
+                <NewStep/>
             </div>
-            <DetailAddToDay task={task}/>
-            <DetailOptions task={task}/>
+            <DetailAddToDay/>
+            <DetailOptions/>
             <DetailCategory/>
             <DetailsAddFile/>
             <DetailAddNote/>

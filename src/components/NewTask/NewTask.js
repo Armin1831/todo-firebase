@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import {Timestamp} from "firebase/firestore";
 import useFirestore from "../../hooks/useFirestore";
 import {userContext} from "../../context/userContext";
 import "./NewTask.css"
@@ -24,12 +23,16 @@ const NewTask = ({list}) => {
                 isImportant: list === "important",
                 isInMyDay: list === "my_day",
                 lists: list === "inbox" ? ["inbox"] : [list, "inbox"],
-                reminder: Timestamp.fromDate(new Date()),
-                dueDate: Timestamp.fromDate(new Date()),
+                reminder: "",
+                dueDate: "",
                 repeat: "",
                 category: [],
                 note: "",
-                steps: []
+                steps: [],
+                file: {
+                    downloadURL:"",
+                    name : ""
+                }
             }
             setTask("")
             await createDocument(taskData)

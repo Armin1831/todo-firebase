@@ -1,22 +1,24 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {taskContext} from "../../context/taskContext";
 import useFirestore from "../../hooks/useFirestore";
 import "./StepList.css"
+
 // components
 import Step from "../Step/Step";
 
 
-const StepList = ({steps, id: taskId}) => {
+const StepList = () => {
+    const {task, taskId} = useContext(taskContext)
     const {updateDocument} = useFirestore("tasks");
 
     const deleteStep = async (id) => {
-        await updateDocument(taskId, {
-            steps: steps.filter((step) => step.createdAt !== id)
+        await updateDocument(task.id, {
+            steps: task.steps.filter((step) => step.createdAt !== id)
         })
     }
     const completeStep = async (id) => {
-        const newSteps = steps.map((step) => {
+        const newSteps = task.steps.map((step) => {
             if (Number(step.createdAt) === Number(id)) {
-                console.log(step)
                 return {
                     ...step,
                     isCompleted: !step.isCompleted
@@ -32,8 +34,9 @@ const StepList = ({steps, id: taskId}) => {
     return (
         <div>
             {
-                steps.map(step => <Step key={step.createdAt} step={step} completeStep={() => completeStep(step.createdAt)}
-                                        deleteStep={() => deleteStep(step.createdAt)}/>)
+                task.steps.map(step => <Step key={step.createdAt} step={step}
+                                             completeStep={() => completeStep(step.createdAt)}
+                                             deleteStep={() => deleteStep(step.createdAt)}/>)
             }
         </div>
     );

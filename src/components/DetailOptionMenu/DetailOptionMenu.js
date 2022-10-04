@@ -9,11 +9,12 @@ const DetailOptionMenu = ({title, menuOptions, updateSomeDates}) => {
             <ul className="date-option-menu">
                 {
                     menuOptions.map((menuOption, index) => {
+                        const Logo = menuOption.logo
                         return (
                             <li className="date-option-menu__item" key={index}
                                 onClick={() => updateSomeDates(menuOption.timeObject ? menuOption.timeObject : menuOption.title)}>
                                 <div className="date-option-menu__left">
-                                    {menuOption.logo}
+                                    <Logo/>
                                     <span className="date-option-menu__title">{menuOption.title}</span>
                                 </div>
                                 {menuOption.value && <span className="date-option-menu__day">{menuOption.value}</span>}

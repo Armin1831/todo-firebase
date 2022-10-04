@@ -1,10 +1,9 @@
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-
 class MyDate {
-    constructor() {
-        this.date = new Date()
+    constructor(dateObj) {
+        this.date = dateObj ? dateObj : new Date()
         this.hours = this.date.getHours()
         this.today = weekday[this.date.getDay()]
         this.minutes = this.date.getMinutes()
@@ -32,7 +31,7 @@ class MyDate {
 
     getNextWeek() {
         const nextWeek = new Date()
-        nextWeek.setDate(this.date.getDate() + 7)
+        nextWeek.setDate(this.date.getDate() + 8)
         return {
             title: weekday[nextWeek.getDay()],
             value: nextWeek

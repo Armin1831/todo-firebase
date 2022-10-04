@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import "./DetailOptions.css";
 import useFirestore from "../../hooks/useFirestore";
-import {Timestamp, arrayUnion} from "firebase/firestore";
+import {Timestamp, arrayUnion, arrayRemove} from "firebase/firestore";
 import OutsideHandler from "../../hooks/useOutsideHandler";
 import MyDate from "../../utils/MyDate";
+import {taskContext} from "../../context/taskContext";
 
 // components
 import DetailOptionHead from "../DetailsOptionHead/DetailOptionHead";
@@ -30,120 +31,130 @@ const myDate = new MyDate()
 const laterHours = myDate.getLaterHours()
 const tomorrow = myDate.getTomorrow()
 const nextWeek = myDate.getNextWeek()
+const getHoursFormat = (hours) => {
+    return {
+        num: hours > 12 ? hours - 12 : hours === 0 ? 12 : hours, ampm: hours >= 12 ? 'PM' : 'AM'
+    }
+}
 
 
 const detailOptionMenu = [
     {
-        title: "Reminder",
-        options: [
-            {
-                title: "Later today",
-                logo: <LaterTodayLogo/>,
-                timeObject: laterHours.value,
-                value: `${laterHours.title > 12 ?
-                    laterHours.title - 12 : laterHours.title === 0 ? 12 : laterHours.title}:00 
-                ${laterHours.title >= 12 ? 'PM' : 'AM'}`
-            },
-            {
-                title: "Tomorrow",
-                logo: <TomorrowLogo/>,
-                timeObject: tomorrow.value,
-                value: `${tomorrow.title.slice(0, 3)}, ${tomorrow.value.getHours() > 12 ?
-                    tomorrow.value.getHours() - 12 : tomorrow.value.getHours() === 0 ? 12 : tomorrow.value.getHours()} 
-                    ${tomorrow.value.getHours() >= 12 ? 'PM' : 'AM'}`
-            },
-            {
-                title: "Next week",
-                logo: <NextWeekLogo/>,
-                timeObject: nextWeek.value,
-                value: `${nextWeek.title.slice(0, 3)}, ${nextWeek.value.getHours() > 12 ?
-                    nextWeek.value.getHours() - 12 : nextWeek.value.getHours() === 0 ? 12 : nextWeek.value.getHours()} 
-                ${nextWeek.value.getHours() >= 12 ? 'PM' : 'AM'}`
-            }
-        ]
+        title: "Reminder", options: [{
+            title: "Later today",
+            logo: LaterTodayLogo,
+            timeObject: laterHours.value,
+            value: `${getHoursFormat(laterHours.title).num}:00 
+                ${getHoursFormat(laterHours.title).ampm}`
+        }, {
+            title: "Tomorrow",
+            logo: TomorrowLogo,
+            timeObject: tomorrow.value,
+            value: `${tomorrow.title.slice(0, 3)}, ${getHoursFormat(tomorrow.value.getHours()).num} 
+                    ${getHoursFormat(tomorrow.value.getHours()).ampm}`
+        }, {
+            title: "Next week",
+            logo: NextWeekLogo,
+            timeObject: nextWeek.value,
+            value: `${nextWeek.title.slice(0, 3)}, ${getHoursFormat(nextWeek.value.getHours()).num} 
+                ${getHoursFormat(nextWeek.value.getHours()).ampm}`
+        }]
     },
     {
-        title: "Due",
-        options: [
-            {
-                title: "Today",
-                logo: <TodayCalendarLogo/>,
-                timeObject: myDate.date,
-                value: myDate.today.slice(0, 3)
-            },
-            {
-                title: "Tomorrow",
-                logo: <TomorrowClendarLogo/>,
-                timeObject: tomorrow.value,
-                value: tomorrow.title.slice(0, 3)
-            },
-            {
-                title: "Next week",
-                logo: <NextWeeksLogo/>,
-                timeObject: nextWeek.value,
-                value: nextWeek.title.slice(0, 3)
-            }
-        ]
+        title: "Due", options: [{
+            title: "Today", logo: TodayCalendarLogo, timeObject: myDate.date, value: myDate.today.slice(0, 3)
+        }, {
+            title: "Tomorrow", logo: TomorrowClendarLogo, timeObject: tomorrow.value, value: tomorrow.title.slice(0, 3)
+        }, {
+            title: "Next week", logo: NextWeeksLogo, timeObject: nextWeek.value, value: nextWeek.title.slice(0, 3)
+        }]
     },
     {
-        title: "Repeat",
-        options: [
-            {
-                title: "Daily",
-                logo: <DailyRepaetLogo/>
-            },
-            {
-                title: "Weekdays",
-                logo: <WeekdaysRepeatLogo/>
-            },
-            {
-                title: "Weekly",
-                logo: <WeeklyRepeatLogo/>
-            },
-            {
-                title: "Monthly",
-                logo: <MonthlyRepeatLogo/>
-            },
-            {
-                title: "Yearly",
-                logo: <YearlyRepaetLogo/>
-            }
-        ]
-    }
-]
+        title: "Repeat", options: [{
+            title: "Daily", logo: DailyRepaetLogo
+        }, {
+            title: "Weekdays", logo: WeekdaysRepeatLogo
+        }, {
+            title: "Weekly", logo: WeeklyRepeatLogo
+        }, {
+            title: "Monthly", logo: MonthlyRepeatLogo
+        }, {
+            title: "Yearly", logo: YearlyRepaetLogo
+        }]
+    }]
 
 
-const DetailOptions = ({task}) => {
+const DetailOptions = () => {
+    const {task} = useContext(taskContext)
     const {updateDocument} = useFirestore("tasks")
     const [informationMenus, setInformationMenus] = useState({
-        ReminderMenu: false,
-        RepeatMenu: false,
-        DueMenu: false
+        ReminderMenu: false, RepeatMenu: false, DueMenu: false
     })
     const openInformationMenu = (e) => {
         setInformationMenus({
-            ReminderMenu: false,
-            RepeatMenu: false,
-            DueMenu: false,
-            [e]: !informationMenus[e]
+            ReminderMenu: false, RepeatMenu: false, DueMenu: false, [e]: !informationMenus[e]
         })
     }
+    const reminderTitle = {
+        hours: task.reminder !== "" ?
+            `Remind My At 
+         ${getHoursFormat(task.reminder.toDate().getHours()).num}
+         ${getHoursFormat(task.reminder.toDate().getHours()).ampm}`
+            : "Remind My",
+        day: task.reminder !== "" ? task.reminder.toDate().getDay() !== myDate.date.getDay() ? "Tomorrow" : "Today" : null
+    }
+    const dueTitle = {
+        hours: task.dueDate !== "" ?
+            task.dueDate.toDate().getDay() !== myDate.date.getDay() ? "Tomorrow" : "Today"
+            : "Add Due Date",
+        day: null
+    }
+    const repeatTitle = {
+        hours: task.repeat !== "" ?
+            task.repeat
+            : "Repeat",
+        day: null
+    }
+
+
     const updateSomeDates = (title) => async (timeObject) => {
         switch (title) {
             case "Reminder":
+                if (timeObject) {
+                    openInformationMenu("ReminderMenu")
+                    await updateDocument(task.id, {
+                        reminder: Timestamp.fromDate(timeObject)
+                    })
+                    break;
+                }
                 await updateDocument(task.id, {
-                    reminder: Timestamp.fromDate(timeObject)
+                    reminder: ""
                 })
                 break;
             case "Due":
+                if (timeObject) {
+                    openInformationMenu("DueMenu")
+                    await updateDocument(task.id, {
+                        dueDate: Timestamp.fromDate(timeObject),
+                        lists: task.lists.includes("planned") ? task.lists : arrayUnion("planned")
+                    })
+                    break;
+                }
                 await updateDocument(task.id, {
-                    dueDate: Timestamp.fromDate(timeObject),
-                    lists: task.lists.includes("planned") ? task.lists : arrayUnion("planned")
+                    dueDate: "",
+                    lists: arrayRemove("planned")
                 })
                 break;
             case "Repeat":
+                if (timeObject) {
+                    openInformationMenu("RepeatMenu")
+                    await updateDocument(task.id, {
+                        repeat: timeObject
+                    })
+                    break;
+                }
                 await updateDocument(task.id, {
-                    repeat: timeObject
+                    repeat: ""
                 })
                 break;
             default:
@@ -155,14 +166,14 @@ const DetailOptions = ({task}) => {
             <div className="details-option p-relative">
                 <OutsideHandler setInformationMenus={setInformationMenus} menu="ReminderMenu">
                     <DetailOptionHead
-                        openInformationMenu={openInformationMenu}
-                        logo={<ReminderLogo/>}
-                        menuName="ReminderMenu"
-                        title="Remind My"
+                        openInformationMenu={() => openInformationMenu("ReminderMenu")}
+                        logo={ReminderLogo}
+                        hours={reminderTitle.hours}
+                        day={reminderTitle.day}
+                        updateSomeDates={updateSomeDates("Reminder")}
                     />
-                    <div className={informationMenus.ReminderMenu ?
-                        "details-date-option details-date-option--show" : "details-date-option"
-                    }>
+                    <div
+                        className={informationMenus.ReminderMenu ? "details-date-option details-date-option--show" : "details-date-option"}>
                         <DetailOptionMenu
                             title={detailOptionMenu[0].title}
                             menuOptions={detailOptionMenu[0].options}
@@ -174,13 +185,13 @@ const DetailOptions = ({task}) => {
             <div className="details-option p-relative">
                 <OutsideHandler setInformationMenus={setInformationMenus} menu="DueMenu">
                     <DetailOptionHead
-                        openInformationMenu={openInformationMenu}
-                        title="Add due date"
-                        logo={<DueDateLogo style={{color: "#797775"}}/>}
-                        menuName="DueMenu"
+                        openInformationMenu={() => openInformationMenu("DueMenu")}
+                        logo={DueDateLogo}
+                        hours={dueTitle.hours}
+                        updateSomeDates={updateSomeDates("Due")}
                     />
-                    <div className={informationMenus.DueMenu ?
-                        "details-date-option details-date-option--show" : "details-date-option"}
+                    <div
+                        className={informationMenus.DueMenu ? "details-date-option details-date-option--show" : "details-date-option"}
                     >
                         <DetailOptionMenu
                             title={detailOptionMenu[1].title}
@@ -193,14 +204,13 @@ const DetailOptions = ({task}) => {
             <div className="details-option p-relative">
                 <OutsideHandler setInformationMenus={setInformationMenus} menu="RepeatMenu">
                     <DetailOptionHead
-                        openInformationMenu={openInformationMenu}
-                        title="Repeat"
-                        logo={<RecurringLogo/>}
-                        menuName="RepeatMenu"
+                        openInformationMenu={() => openInformationMenu("RepeatMenu")}
+                        logo={RecurringLogo}
+                        hours={repeatTitle.hours}
+                        updateSomeDates={updateSomeDates("Repeat")}
                     />
                     <div
-                        className={informationMenus.RepeatMenu ?
-                            "details-date-option details-date-option--show" : "details-date-option"}
+                        className={informationMenus.RepeatMenu ? "details-date-option details-date-option--show" : "details-date-option"}
                         style={{top: "auto", bottom: "-2rem"}}
                     >
                         <DetailOptionMenu

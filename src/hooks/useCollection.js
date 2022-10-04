@@ -34,7 +34,7 @@ const useCollection = (collectionName, _queryWhere = null, _orderByWhat = null) 
             setError("")
         }, (error) => {
             setError(error)
-            console.log(error.message)
+            console.log(error)
         });
 
         return () => unsubscribe()

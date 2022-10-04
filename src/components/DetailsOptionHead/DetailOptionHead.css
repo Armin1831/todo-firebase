@@ -1,10 +1,16 @@
 .details-option__top {
     display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.details-option__topWrapper {
+    display: flex;
     background-color: white;
     align-items: center;
 }
 
-.details-option__top:hover {
+.details-option__topWrapper:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -16,10 +22,26 @@
     color: #797775;
 }
 
-.details-option__title {
+.details-option__hours {
     width: 100%;
-    margin: 0 2rem;
     font-family: Roboto-Regular, sans-serif;
     font-size: 1.4rem;
+    color: #797775;
+}
+
+.details-option__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 1.2rem;
+    gap: .3rem;
+}
+
+.details-option__title .details-option__hours {
+    color: var(--primary-color) !important;
+}
+
+.details-option__day {
     color: #797775;
 }
