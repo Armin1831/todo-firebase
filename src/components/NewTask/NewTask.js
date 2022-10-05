@@ -5,6 +5,9 @@ import "./NewTask.css"
 
 //icons
 import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.svg";
+import {ReactComponent as CalendarLogo} from "../../assets/images/icons/calendar-logo.svg";
+import {ReactComponent as ReminderLogo} from "../../assets/images/icons/reminder-logo.svg";
+import {ReactComponent as RecurringLogo} from "../../assets/images/icons/recurring-logo.svg";
 
 
 const NewTask = ({list}) => {
@@ -26,7 +29,7 @@ const NewTask = ({list}) => {
                 reminder: "",
                 dueDate: "",
                 repeat: "",
-                category: [],
+                categories: [],
                 note: "",
                 steps: [],
                 file: {
@@ -55,11 +58,24 @@ const NewTask = ({list}) => {
                             onChange={(e) => setTask(e.target.value)}
                         />
                     </div>
-                    <button className="new-task__add"
-                            onClick={() => addNewTask()}
-                    >
-                        Add
-                    </button>
+                    <div className="new-task-bottom new-task-bottom--show">
+                        <div className="new-task-bottom__options">
+                            <span className="new-task-bottom__icon">
+                                <CalendarLogo style={{color:"black"}}/>
+                            </span>
+                            <span className="new-task-bottom__icon">
+                                <ReminderLogo style={{color:"black"}}/>
+                            </span>
+                            <span className="new-task-bottom__icon">
+                                <RecurringLogo style={{color:"black"}}/>
+                            </span>
+                        </div>
+                        <button className="new-task-bottom__add"
+                                onClick={() => addNewTask()}
+                        >
+                            Add
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>

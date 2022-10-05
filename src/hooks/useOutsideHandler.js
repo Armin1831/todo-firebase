@@ -18,8 +18,12 @@ function useOutsideHandler(
                 if (ref.current.firstChild.classList.contains('main-header_right') && uiState.isSortMenuOpen) {
                     uiStateHandler("isSortMenuOpen", true)
                 }
-                if (ref.current.firstChild.classList.contains('details-category')) {
-                    openCategory()
+                if (ref.current.firstChild.classList.contains('categories')) {
+                    openCategory((prev) => {
+                        if (prev) {
+                            return false;
+                        }
+                    })
                 }
                 if (ref.current.firstChild.classList.contains('details-option__topWrapper')) {
                     setInformationMenus((prev) => {
@@ -38,7 +42,7 @@ function useOutsideHandler(
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [ref, setInformationMenus, menu, uiState, uiStateHandler,openCategory]);
+    }, [ref, setInformationMenus, menu, uiState, uiStateHandler, openCategory]);
 }
 
 

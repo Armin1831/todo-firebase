@@ -65,7 +65,6 @@ const DetailsAddFile = () => {
         } catch (e) {
             alert("delete file filed")
         }
-
     }
     return (
         <>

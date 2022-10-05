@@ -7,6 +7,7 @@
     transition: background-color 150ms;
     align-items: center;
     border-radius: .6rem;
+    margin-bottom: 1rem;
 }
 
 .add-file:hover {
@@ -40,6 +41,7 @@
 
 .download {
     display: flex;
+    margin-bottom: 1rem;
     background-color: white;
     padding: 1.6rem 2rem;
     border-radius: 0.6rem;

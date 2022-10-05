@@ -31,7 +31,7 @@ class MyDate {
 
     getNextWeek() {
         const nextWeek = new Date()
-        nextWeek.setDate(this.date.getDate() + 8)
+        nextWeek.setDate(this.date.getDay() === 0 ? this.date.getDate() + 8 : this.date.getDate() + 6)
         return {
             title: weekday[nextWeek.getDay()],
             value: nextWeek

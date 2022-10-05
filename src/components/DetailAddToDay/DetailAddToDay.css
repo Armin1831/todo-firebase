@@ -5,6 +5,7 @@
     border-radius: 0.6rem;
     transition: background-color 150ms;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .add-toDay:hover {

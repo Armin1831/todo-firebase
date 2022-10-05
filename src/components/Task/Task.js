@@ -14,8 +14,14 @@ const Task = ({className, task}) => {
     const {updateDocument} = useFirestore("tasks");
 
     const completeTask = async (task) => {
+        if (task.dueDate !== "") {
+
+        }
         await updateDocument(task.id, {
-            isCompleted: !task.isCompleted
+            isCompleted: !task.isCompleted,
+            lists: task.dueDate !== "" ?
+                task.isCompleted ? arrayUnion("planned") : arrayRemove("planned")
+                : task.lists
         })
     }
 

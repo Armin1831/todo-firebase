@@ -7,11 +7,14 @@
     box-shadow: 0 1.2px 3.6px var(--bg-shadow), 0 6.4px 14.4px var(--bg-shadow);
 }
 
+.details-top {
+    margin-bottom: 1rem;
+    height: calc(100% - 6.5rem);
+}
+
 .detail-flex {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: calc(100% - 6rem);
 }
 
 .detail-task {
@@ -48,8 +51,6 @@
 
 
 /* date option */
-
-
 
 
 @media (max-width: 992px) {

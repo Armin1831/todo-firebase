@@ -1,12 +1,34 @@
+.categories {
+    background-color: white;
+    padding: 1.6rem 2rem;
+    border-radius: .6rem;
+    margin-bottom: 1rem;
+}
+
+.categories__item {
+    display: flex;
+    align-items: center;
+    border-radius: .4rem;
+    padding: .5rem;
+    gap: .2rem;
+}
+
+.categories__title {
+    font-size: 1.5rem;
+}
+
+.categories__lent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: .8rem;
+    gap: .7rem;
+}
 
 .details-category {
     display: flex;
-    background-color: white;
-    padding: 1.6rem 2rem;
-    cursor: pointer;
     transition: background-color 150ms;
     align-items: center;
-    border-radius: .6rem;
 }
 
 .details-category:hover {
@@ -26,6 +48,7 @@
     font-family: Roboto-Regular, sans-serif;
     font-size: 1.4rem;
     color: #797775;
+    cursor: pointer;
 }
 
 .details-category__options {

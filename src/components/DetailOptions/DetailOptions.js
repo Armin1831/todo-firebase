@@ -37,7 +37,6 @@ const getHoursFormat = (hours) => {
     }
 }
 
-
 const detailOptionMenu = [
     {
         title: "Reminder", options: [{
@@ -81,7 +80,7 @@ const detailOptionMenu = [
         }, {
             title: "Yearly", logo: YearlyRepaetLogo
         }]
-    }]
+    }];
 
 
 const DetailOptions = () => {
@@ -95,17 +94,26 @@ const DetailOptions = () => {
             ReminderMenu: false, RepeatMenu: false, DueMenu: false, [e]: !informationMenus[e]
         })
     }
+
+    // titles
     const reminderTitle = {
         hours: task.reminder !== "" ?
             `Remind My At 
          ${getHoursFormat(task.reminder.toDate().getHours()).num}
          ${getHoursFormat(task.reminder.toDate().getHours()).ampm}`
             : "Remind My",
-        day: task.reminder !== "" ? task.reminder.toDate().getDay() !== myDate.date.getDay() ? "Tomorrow" : "Today" : null
+        day: task.reminder !== "" ?
+            task.reminder.toDate().getDay() === myDate.date.getDay() + 1 ?
+                "Tomorrow" :
+                task.reminder.toDate().getDate() === myDate.date.getDate() ?
+                    "Today" : task.reminder.toDate().toDateString() : null
+
     }
     const dueTitle = {
         hours: task.dueDate !== "" ?
-            task.dueDate.toDate().getDay() !== myDate.date.getDay() ? "Tomorrow" : "Today"
+            task.dueDate.toDate().getDay() === myDate.date.getDay() + 1 ?
+                "Tomorrow" : task.dueDate.toDate().getDate() === myDate.date.getDate() ?
+                    "Today" : "Due " + task.dueDate.toDate().toDateString()
             : "Add Due Date",
         day: null
     }

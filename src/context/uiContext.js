@@ -1,16 +1,24 @@
 import React, {createContext, useState} from 'react';
 
-const initialState = {
-    isSortMenuOpen: false,
-    isListOptionsOpen: false,
-    isLeftSidebarOpen: false,
-}
 
-export const UiContext = createContext(initialState);
+export const UiContext = createContext({
+    uiState:{
+        isSortMenuOpen: false,
+        isListOptionsOpen: false,
+        isLeftSidebarOpen: false,
+    },
+    uiStateHandler: (name) => {
+        return name;
+    }
+});
 
 
 const useUiContext = ({children}) => {
-    const [uiState, setUiState] = useState(initialState);
+    const [uiState, setUiState] = useState({
+        isSortMenuOpen: false,
+        isListOptionsOpen: false,
+        isLeftSidebarOpen: false,
+    });
     const uiStateHandler = (name, outside = false) => {
         setUiState((prevState) => {
             return {
