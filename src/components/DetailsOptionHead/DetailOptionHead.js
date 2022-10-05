@@ -9,7 +9,7 @@ const DetailOptionHead = ({hours, day, logo: Logo, openInformationMenu, updateSo
     const isHaveDate = hours !== "Add Due Date" && hours !== "Remind My" && hours !== "Repeat"
 
     return (
-        <div className="details-option__topWrapper" >
+        <div className="details-option__topWrapper">
             <div className="details-option__top" onClick={openInformationMenu}>
                 <span className="details-option__icon">
                     <Logo style={{color: isHaveDate ? "var(--primary-color)" : "#797775"}}/>

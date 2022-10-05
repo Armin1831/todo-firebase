@@ -1,6 +1,9 @@
 import React, {useContext, useState} from 'react';
 import useFirestore from "../../hooks/useFirestore";
 import {userContext} from "../../context/userContext";
+import DetailOptionMenu from "../DetailOptionMenu/DetailOptionMenu";
+import {detailOptionMenu} from "../../utils/dateOptionsUtils";
+import OutsideHandler from "../../hooks/useOutsideHandler";
 import "./NewTask.css"
 
 //icons
@@ -12,9 +15,17 @@ import {ReactComponent as RecurringLogo} from "../../assets/images/icons/recurri
 
 const NewTask = ({list}) => {
     const [task, setTask] = useState("");
+    const [openNewTaskMenus, setOpenNewTaskMenus] = useState({
+        ReminderMenu: false, RepeatMenu: false, DueMenu: false
+    });
     const {user: {user}} = useContext(userContext);
     const {createDocument} = useFirestore("tasks");
 
+    const openNewTaskMenu = (e) => {
+        setOpenNewTaskMenus({
+            ReminderMenu: false, RepeatMenu: false, DueMenu: false, [e]: !openNewTaskMenus[e]
+        })
+    }
 
     const addNewTask = async () => {
         if (task !== "") {
@@ -33,8 +44,8 @@ const NewTask = ({list}) => {
                 note: "",
                 steps: [],
                 file: {
-                    downloadURL:"",
-                    name : ""
+                    downloadURL: "",
+                    name: ""
                 }
             }
             setTask("")
@@ -60,15 +71,54 @@ const NewTask = ({list}) => {
                     </div>
                     <div className="new-task-bottom new-task-bottom--show">
                         <div className="new-task-bottom__options">
-                            <span className="new-task-bottom__icon">
-                                <CalendarLogo style={{color:"black"}}/>
-                            </span>
-                            <span className="new-task-bottom__icon">
-                                <ReminderLogo style={{color:"black"}}/>
-                            </span>
-                            <span className="new-task-bottom__icon">
-                                <RecurringLogo style={{color:"black"}}/>
-                            </span>
+                            <OutsideHandler
+                                setInformationMenus={setOpenNewTaskMenus} menu="DueMenu"
+                            >
+                                <span className="new-task-bottom__icon">
+                                    <CalendarLogo
+                                        style={{color: "black"}}
+                                        onClick={() => openNewTaskMenu("DueMenu")}
+                                    />
+                                    <DetailOptionMenu
+                                        className={openNewTaskMenus.DueMenu ?
+                                            "option-menu option-menu--show" : "option-menu"}
+                                        title={detailOptionMenu[1].title}
+                                        menuOptions={detailOptionMenu[1].options}
+                                    />
+                                </span>
+                            </OutsideHandler>
+                            <OutsideHandler
+                                setInformationMenus={setOpenNewTaskMenus} menu="ReminderMenu"
+                            >
+                                <span className="new-task-bottom__icon">
+                                    <ReminderLogo
+                                        style={{color: "black"}}
+                                        onClick={() => openNewTaskMenu("ReminderMenu")}
+                                    />
+                                    <DetailOptionMenu
+                                        className={openNewTaskMenus.ReminderMenu ?
+                                            "option-menu option-menu--show" : "option-menu"}
+                                        title={detailOptionMenu[0].title}
+                                        menuOptions={detailOptionMenu[0].options}
+                                    />
+                                </span>
+                            </OutsideHandler>
+                            <OutsideHandler
+                                setInformationMenus={setOpenNewTaskMenus} menu="RepeatMenu"
+                            >
+                                <span className="new-task-bottom__icon">
+                                    <RecurringLogo
+                                        style={{color: "black"}}
+                                        onClick={() => openNewTaskMenu("RepeatMenu")}
+                                    />
+                                    <DetailOptionMenu
+                                        className={openNewTaskMenus.RepeatMenu ?
+                                            "option-menu option-menu--show" : "option-menu"}
+                                        title={detailOptionMenu[2].title}
+                                        menuOptions={detailOptionMenu[2].options}
+                                    />
+                                </span>
+                            </OutsideHandler>
                         </div>
                         <button className="new-task-bottom__add"
                                 onClick={() => addNewTask()}

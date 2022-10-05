@@ -3,7 +3,8 @@ import React, {useEffect, useRef} from "react";
 
 function useOutsideHandler(
     ref, setInformationMenus = null,
-    menu = null, uiState = null,
+    menu = null,
+    uiState = null,
     uiStateHandler = null,
     openCategory = null
 ) {
@@ -32,7 +33,14 @@ function useOutsideHandler(
                             [menu]: false
                         }
                     })
-
+                }
+                if (ref.current.firstChild.classList.contains('new-task-bottom__icon')) {
+                    setInformationMenus((prev) => {
+                        return {
+                            ...prev,
+                            [menu]: false
+                        }
+                    })
                 }
             }
 
@@ -47,7 +55,7 @@ function useOutsideHandler(
 
 
 export default function OutsideHandler(props) {
-    const {setInformationMenus, menu, uiState, uiStateHandler, openCategory} = props
+    const {setInformationMenus, uiState, uiStateHandler, openCategory, menu} = props
     const wrapperRef = useRef(null);
     useOutsideHandler(wrapperRef, setInformationMenus, menu, uiState, uiStateHandler, openCategory);
 
