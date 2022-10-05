@@ -1,6 +1,8 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 import {Outlet, useParams, useNavigate} from "react-router-dom";
 import {tasksContext} from "../../context/tasksContext";
+import {UiContext} from "../../context/uiContext";
+import {getLogo, getTitle, getCompleteAndNotCompleteTasks, getSortedTasks} from "./utils"
 import "./Main.css";
 
 // components
@@ -11,21 +13,22 @@ import TasksList from "../../components/TasksList/TasksList";
 
 // icons
 import {ReactComponent as SidebarLogo} from "../../assets/images/icons/sidebar-logo.svg";
-import {ReactComponent as SunLogo} from "../../assets/images/icons/sun-logo.svg";
-import {ReactComponent as StarLogo} from "../../assets/images/icons/star-logo.svg";
-import {ReactComponent as CalenderLogo} from "../../assets/images/icons/calendar-logo.svg";
-import {ReactComponent as PersonLogo} from "../../assets/images/icons/person-logo.svg";
-import {ReactComponent as HomeLogo} from "../../assets/images/icons/home-logo.svg";
 
 const Main = () => {
     const {tasksListId} = useParams()
     const {tasks, error} = useContext(tasksContext);
+    const {uiState: {isLeftSidebarOpen}, uiStateHandler} = useContext(UiContext);
     const [openCompletedTasks, setOpenCompletedTasks] = useState(false);
+    const [sortOption, setSortOption] = useState("");
     const [completedTasks, setCompletedTasks] = useState([]);
     const [notCompletedTasks, setNotCompletedTasks] = useState([]);
     const tasksListRef = useRef(tasksListId);
     const navigate = useNavigate();
 
+    const getSortOption = (sortOption) => {
+        setSortOption(sortOption)
+        uiStateHandler("isSortMenuOpen")
+    }
     useEffect(() => {
         if (tasksListId !== "id") {
             tasksListRef.current = tasksListId
@@ -37,43 +40,28 @@ const Main = () => {
     }, [tasksListId, navigate]);
 
     useEffect(() => {
-        const completedTasks = []
-        const notCompletedTasks = []
-        tasks.forEach(task => {
-            if (task.lists.includes(tasksListRef.current)) {
-                if (task.isCompleted) {
-                    completedTasks.push(task)
-                } else notCompletedTasks.push(task)
-            }
-        })
+        const {notCompletedTasks, completedTasks} =
+            getCompleteAndNotCompleteTasks(tasks, tasksListRef.current);
+        if (sortOption !== "") {
+            const [notACompletedTasks, completedATasks] =
+                getSortedTasks([notCompletedTasks, completedTasks], sortOption)
+            setCompletedTasks(completedATasks)
+            setNotCompletedTasks(notACompletedTasks)
+        }
         setCompletedTasks(completedTasks)
         setNotCompletedTasks(notCompletedTasks)
-    }, [tasks, tasksListId]);
+    }, [tasks, tasksListId, sortOption]);
 
-    const getLogo = (list) => {
-        switch (list) {
-            case "inbox":
-                return HomeLogo;
-            case "assigned_to_me":
-                return PersonLogo;
-            case "planned":
-                return CalenderLogo;
-            case "important":
-                return StarLogo;
-            case "my_day":
-                return SunLogo;
-            default:
-                return SidebarLogo;
-        }
-    };
+
+
 
     return (
         <>
             <main className="main">
                 <MainHeader
-                    name={tasksListRef.current.replaceAll("_", " ")[0].toUpperCase()
-                        + tasksListRef.current.replaceAll("_", " ").slice(1)}
-                    logo={getLogo(tasksListId)}
+                    name={getTitle(tasksListRef.current)}
+                    logo={!isLeftSidebarOpen ? SidebarLogo : getLogo(tasksListId)}
+                    setSortOption={getSortOption}
                 />
                 <NewTask list={tasksListRef.current}/>
                 {error && (

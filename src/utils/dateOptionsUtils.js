@@ -25,49 +25,76 @@ export const getHoursFormat = (hours) => {
 }
 
 
-
 export const detailOptionMenu = [
     {
-        title: "Reminder", options: [{
-            title: "Later today",
-            logo: LaterTodayLogo,
-            timeObject: laterHours.value,
-            value: `${getHoursFormat(laterHours.title).num}:00 
+        title: "Reminder", options: [
+            {
+                title: "Later today",
+                logo: LaterTodayLogo,
+                timeObject: laterHours.value,
+                value: `${getHoursFormat(laterHours.title).num}:00 
                 ${getHoursFormat(laterHours.title).ampm}`
-        }, {
-            title: "Tomorrow",
-            logo: TomorrowLogo,
-            timeObject: tomorrow.value,
-            value: `${tomorrow.title.slice(0, 3)}, ${getHoursFormat(tomorrow.value.getHours()).num} 
+            },
+            {
+                title: "Tomorrow",
+                logo: TomorrowLogo,
+                timeObject: tomorrow.value,
+                value: `${tomorrow.title.slice(0, 3)}, ${getHoursFormat(tomorrow.value.getHours()).num} 
                     ${getHoursFormat(tomorrow.value.getHours()).ampm}`
-        }, {
-            title: "Next week",
-            logo: NextWeekLogo,
-            timeObject: nextWeek.value,
-            value: `${nextWeek.title.slice(0, 3)}, ${getHoursFormat(nextWeek.value.getHours()).num} 
+            },
+            {
+                title: "Next week",
+                logo: NextWeekLogo,
+                timeObject: nextWeek.value,
+                value: `${nextWeek.title.slice(0, 3)}, ${getHoursFormat(nextWeek.value.getHours()).num} 
                 ${getHoursFormat(nextWeek.value.getHours()).ampm}`
-        }]
+            }
+        ]
     },
     {
-        title: "Due", options: [{
-            title: "Today", logo: TodayCalendarLogo, timeObject: myDate.date, value: myDate.today.slice(0, 3)
-        }, {
-            title: "Tomorrow", logo: TomorrowClendarLogo, timeObject: tomorrow.value, value: tomorrow.title.slice(0, 3)
-        }, {
-            title: "Next week", logo: NextWeeksLogo, timeObject: nextWeek.value, value: nextWeek.title.slice(0, 3)
-        }]
+        title: "Due", options: [
+            {
+                title: "Today",
+                logo: TodayCalendarLogo,
+                timeObject: myDate.date,
+                value: myDate.today.slice(0, 3)
+            },
+            {
+                title: "Tomorrow",
+                logo: TomorrowClendarLogo,
+                timeObject: tomorrow.value,
+                value: tomorrow.title.slice(0, 3)
+            },
+            {
+                title: "Next week",
+                logo: NextWeeksLogo,
+                timeObject: nextWeek.value,
+                value: nextWeek.title.slice(0, 3)
+            }
+        ]
     },
     {
-        title: "Repeat", options: [{
-            title: "Daily", logo: DailyRepaetLogo
-        }, {
-            title: "Weekdays", logo: WeekdaysRepeatLogo
-        }, {
-            title: "Weekly", logo: WeeklyRepeatLogo
-        }, {
-            title: "Monthly", logo: MonthlyRepeatLogo
-        }, {
-            title: "Yearly", logo: YearlyRepaetLogo
-        }]
+        title: "Repeat", options: [
+            {
+                title: "Daily",
+                logo: DailyRepaetLogo
+            },
+            {
+                title: "Weekdays",
+                logo: WeekdaysRepeatLogo
+            },
+            {
+                title: "Weekly",
+                logo: WeeklyRepeatLogo
+            },
+            {
+                title: "Monthly",
+                logo: MonthlyRepeatLogo
+            },
+            {
+                title: "Yearly",
+                logo: YearlyRepaetLogo
+            }
+        ]
     }
 ];

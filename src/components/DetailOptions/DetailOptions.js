@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {detailOptionMenu, getHoursFormat, myDate} from "../../utils/dateOptionsUtils"
+import {detailOptionMenu, getHoursFormat, myDate} from "../../utils/dateOptionsUtils";
 import useFirestore from "../../hooks/useFirestore";
 import {Timestamp, arrayUnion, arrayRemove} from "firebase/firestore";
 import OutsideHandler from "../../hooks/useOutsideHandler";

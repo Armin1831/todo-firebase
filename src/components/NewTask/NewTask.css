@@ -72,17 +72,27 @@
 
 .new-task-bottom__icon {
     transition: 150ms;
-    border-radius: .4rem;
-    padding: .3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
-.new-task-bottom__icon:hover {
-    background-color: white;
+.option-menu__top {
+    color: #292827;
+    border: 1px solid #A19F9D;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-radius: .4rem;
+    padding: .2rem .3rem;
 }
+
+.option-menu__top span {
+    font-size: 1.4rem;
+    color: #292827;
+}
+
 
 .new-task-bottom__add {
     cursor: pointer;
@@ -103,7 +113,7 @@
     background-color: white;
     border-radius: .6rem;
     outline: transparent;
-    transition: all 150ms ease-in;
+    transition: all 100ms ease-in;
     box-shadow: rgb(0 0 0 / 13%) 0 3.2px 7.2px 0, rgb(0 0 0 / 11%) 0 0.6px 1.8px 0;
 }
 

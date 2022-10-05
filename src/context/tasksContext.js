@@ -19,7 +19,7 @@ export const tasksContext = createContext(initialState);
 const useTasksContext = () => {
     const {user: {user}} = useContext(userContext);
     const {docs: tasks, error} = useCollection("tasks",
-        ["userCreator", "==", user.uid]);
+        ["userCreator", "==", user.uid],["constructionTime","desc"]);
     const [tasksCount, setTasksCount] = useState({
         "inbox": 0,
         "my_day": 0,

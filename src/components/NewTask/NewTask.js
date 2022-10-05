@@ -1,8 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import useFirestore from "../../hooks/useFirestore";
 import {userContext} from "../../context/userContext";
 import DetailOptionMenu from "../DetailOptionMenu/DetailOptionMenu";
-import {detailOptionMenu} from "../../utils/dateOptionsUtils";
+import {detailOptionMenu, myDate} from "../../utils/dateOptionsUtils";
+import {Timestamp} from "firebase/firestore";
 import OutsideHandler from "../../hooks/useOutsideHandler";
 import "./NewTask.css"
 
@@ -15,18 +16,42 @@ import {ReactComponent as RecurringLogo} from "../../assets/images/icons/recurri
 
 const NewTask = ({list}) => {
     const [task, setTask] = useState("");
+    const [dueDate, setDueDate] = useState(null);
+    const [reminderDate, setReminderDate] = useState(null);
+    const [repeatDate, setRepeatDate] = useState(null);
     const [openNewTaskMenus, setOpenNewTaskMenus] = useState({
         ReminderMenu: false, RepeatMenu: false, DueMenu: false
     });
     const {user: {user}} = useContext(userContext);
     const {createDocument} = useFirestore("tasks");
-
+    useEffect(() => {
+        setDueDate(null)
+        setReminderDate(null)
+        setRepeatDate(null)
+    },[list]);
     const openNewTaskMenu = (e) => {
         setOpenNewTaskMenus({
             ReminderMenu: false, RepeatMenu: false, DueMenu: false, [e]: !openNewTaskMenus[e]
         })
     }
-
+    const updateSomeDates = (title) => (timeObj) => {
+        switch (title) {
+            case "Reminder":
+                setReminderDate(timeObj)
+                openNewTaskMenu("ReminderMenu")
+                break;
+            case "Due":
+                setDueDate(timeObj)
+                openNewTaskMenu("DueMenu")
+                break;
+            case "Repeat":
+                setRepeatDate(timeObj)
+                openNewTaskMenu("RepeatMenu")
+                break;
+            default:
+                break;
+        }
+    }
     const addNewTask = async () => {
         if (task !== "") {
             const taskData = {
@@ -36,10 +61,15 @@ const NewTask = ({list}) => {
                 isCompleted: false,
                 isImportant: list === "important",
                 isInMyDay: list === "my_day",
-                lists: list === "inbox" ? ["inbox"] : [list, "inbox"],
-                reminder: "",
-                dueDate: "",
-                repeat: "",
+                lists: dueDate ?
+                    [...new Set(["inbox", "planned", list])] : list === "inbox" ?
+                        ["inbox"] : [...new Set([list, "inbox"])],
+                reminder: reminderDate ? Timestamp.fromDate(reminderDate) : "",
+                dueDate: dueDate ?
+                    Timestamp.fromDate(dueDate) : list === "planned" ?
+                        Timestamp.fromDate(new Date()) : ""
+                ,
+                repeat: repeatDate ? repeatDate : "",
                 categories: [],
                 note: "",
                 steps: [],
@@ -48,10 +78,27 @@ const NewTask = ({list}) => {
                     name: ""
                 }
             }
+            setRepeatDate(null)
+            setReminderDate(null)
+            setDueDate(null)
             setTask("")
             await createDocument(taskData)
         }
     }
+
+    // titles
+    const reminderTitle = reminderDate ?
+        reminderDate.getDay() === myDate.date.getDay() + 1 ?
+            "Tomorrow" :
+            reminderDate.getDate() === myDate.date.getDate() ?
+                "Today" : reminderDate.toDateString() : null
+
+    const dueTitle = dueDate ?
+        dueDate.getDay() === myDate.date.getDay() + 1 ?
+            "Tomorrow" : dueDate.getDate() === myDate.date.getDate() ?
+                "Today" : dueDate.toDateString()
+        : null
+
 
     return (
         <section className="new-task">
@@ -74,50 +121,80 @@ const NewTask = ({list}) => {
                             <OutsideHandler
                                 setInformationMenus={setOpenNewTaskMenus} menu="DueMenu"
                             >
-                                <span className="new-task-bottom__icon">
-                                    <CalendarLogo
-                                        style={{color: "black"}}
-                                        onClick={() => openNewTaskMenu("DueMenu")}
-                                    />
+                                <div className="new-task-bottom__icon">
+                                    <div className="option-menu__top"
+                                         style={{backgroundColor: dueDate ? "white" : ""}}
+                                    >
+                                        <CalendarLogo
+                                            style={{color: "#292827", cursor: "pointer"}}
+                                            onClick={() => openNewTaskMenu("DueMenu")}
+                                        />
+                                        {dueDate &&
+                                            <span>
+                                                {dueTitle}
+                                            </span>
+                                        }
+                                    </div>
                                     <DetailOptionMenu
                                         className={openNewTaskMenus.DueMenu ?
                                             "option-menu option-menu--show" : "option-menu"}
                                         title={detailOptionMenu[1].title}
                                         menuOptions={detailOptionMenu[1].options}
+                                        updateSomeDates={updateSomeDates("Due")}
                                     />
-                                </span>
+                                </div>
                             </OutsideHandler>
                             <OutsideHandler
                                 setInformationMenus={setOpenNewTaskMenus} menu="ReminderMenu"
                             >
-                                <span className="new-task-bottom__icon">
-                                    <ReminderLogo
-                                        style={{color: "black"}}
-                                        onClick={() => openNewTaskMenu("ReminderMenu")}
-                                    />
+                                <div className="new-task-bottom__icon">
+                                    <div className="option-menu__top"
+                                         style={{backgroundColor: reminderDate ? "white" : ""}}
+                                    >
+                                        <ReminderLogo
+                                            style={{color: "#292827", cursor: "pointer"}}
+                                            onClick={() => openNewTaskMenu("ReminderMenu")}
+                                        />
+                                        {reminderDate &&
+                                            <span>
+                                                {reminderTitle}
+                                            </span>
+                                        }
+                                    </div>
                                     <DetailOptionMenu
                                         className={openNewTaskMenus.ReminderMenu ?
                                             "option-menu option-menu--show" : "option-menu"}
                                         title={detailOptionMenu[0].title}
                                         menuOptions={detailOptionMenu[0].options}
+                                        updateSomeDates={updateSomeDates("Reminder")}
                                     />
-                                </span>
+                                </div>
                             </OutsideHandler>
                             <OutsideHandler
                                 setInformationMenus={setOpenNewTaskMenus} menu="RepeatMenu"
                             >
-                                <span className="new-task-bottom__icon">
-                                    <RecurringLogo
-                                        style={{color: "black"}}
-                                        onClick={() => openNewTaskMenu("RepeatMenu")}
-                                    />
+                                <div className="new-task-bottom__icon">
+                                    <div className="option-menu__top"
+                                         style={{backgroundColor: repeatDate ? "white" : ""}}
+                                    >
+                                        <RecurringLogo
+                                            style={{color: "#292827", cursor: "pointer"}}
+                                            onClick={() => openNewTaskMenu("RepeatMenu")}
+                                        />
+                                        {repeatDate &&
+                                            <span>
+                                                {repeatDate}
+                                            </span>
+                                        }
+                                    </div>
                                     <DetailOptionMenu
                                         className={openNewTaskMenus.RepeatMenu ?
                                             "option-menu option-menu--show" : "option-menu"}
                                         title={detailOptionMenu[2].title}
                                         menuOptions={detailOptionMenu[2].options}
+                                        updateSomeDates={updateSomeDates("Repeat")}
                                     />
-                                </span>
+                                </div>
                             </OutsideHandler>
                         </div>
                         <button className="new-task-bottom__add"

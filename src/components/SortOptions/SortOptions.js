@@ -8,32 +8,48 @@ import {ReactComponent as SunLogo} from "../../assets/images/icons/sun-logo.svg"
 import {ReactComponent as SortLogo} from "../../assets/images/icons/sort-logo.svg";
 import {ReactComponent as CreationDateLogo} from "../../assets/images/icons/creation-date.svg";
 
+const sortMenus = [
+    {
+        name: "Importance",
+        logo: StarLogo
+    },
+    {
+        name: "Due date",
+        logo: DueDateLogo
+    },
+    {
+        name: "Added to My Day",
+        logo: SunLogo
+    },
+    {
+        name: "Alphabetically",
+        logo: SortLogo
+    },
+    {
+        name: "Creation date",
+        logo: CreationDateLogo
+    }
+];
 
-const SortOptions = ({...props}) => {
+
+const SortOptions = ({setSortOption, ...props}) => {
+
     return (
         <div id="sortMenu" {...props}>
             <h4 className="sort-menu__title">Sort by</h4>
             <ul className="sort-options">
-                <li className="sort-options__item">
-                    <StarLogo style={{color: "black"}}/>
-                    <span className="sort-options__title">Importance</span>
-                </li>
-                <li className="sort-options__item">
-                    <DueDateLogo style={{color: "black"}}/>
-                    <span className="sort-options__title">Due date</span>
-                </li>
-                <li className="sort-options__item">
-                    <SunLogo style={{color: "black"}}/>
-                    <span className="sort-options__title">Added to My Day</span>
-                </li>
-                <li className="sort-options__item">
-                    <SortLogo style={{color: "black"}}/>
-                    <span className="sort-options__title">Alphabetically</span>
-                </li>
-                <li className="sort-options__item">
-                    <CreationDateLogo style={{color: "black"}}/>
-                    <span className="sort-options__title">Creation date</span>
-                </li>
+                {sortMenus.map(sortMenu => {
+                    const Logo = sortMenu.logo
+                    return (
+                        <li className="sort-options__item"
+                            key={sortMenu.name}
+                            onClick={() => setSortOption(sortMenu.name)}
+                        >
+                            <Logo style={{color: "#6b6a6a"}}/>
+                            <span className="sort-options__title">{sortMenu.name}</span>
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     );

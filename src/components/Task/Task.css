@@ -4,15 +4,14 @@
     background-color: white;
     padding: 0 2rem;
     border-radius: .6rem;
-    box-shadow: 0 0.3px 0.9px var(--bg-shadow), 0 1.6px 3.6px var(--bg-shadow);
-    transition: background-color 150ms;
+    transition: background-color 200ms;
     cursor: pointer;
     justify-content: space-between;
     align-items: center;
 }
 
 .task:hover {
-    background-color: var(--bg-secondary);
+    background-color: #d6d7d7;
 }
 
 .task__content {

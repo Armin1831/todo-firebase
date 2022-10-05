@@ -11,16 +11,16 @@ import ListOptions from "../ListOptions/ListOptions";
 import SortOptions from "../SortOptions/SortOptions";
 
 
-
-const MainHeader = ({name, logo: Logo}) => {
+const MainHeader = ({name, logo: Logo, setSortOption}) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
+
     return (
         <section className="todo-header">
             <div className="container">
                 <div className="main-header">
                     <div className="main-header_left">
                         <span className="main-header_menu-logo" onClick={() => uiStateHandler("isLeftSidebarOpen")}>
-                            <Logo style={{color:"#3f3e3e",width:"24px",height:"24px"}}/>
+                            <Logo style={{color: "#3f3e3e", width: "24px", height: "24px"}}/>
                         </span>
                         <h2 className="main-header_title">{name}</h2>
                         <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
@@ -43,7 +43,9 @@ const MainHeader = ({name, logo: Logo}) => {
                                 <span className="main-header_sort">Sort</span>
                             </div>
                             <SortOptions
-                                className={uiState.isSortMenuOpen ? "sort-menu sort-menu--show" : "sort-menu"}/>
+                                className={uiState.isSortMenuOpen ? "sort-menu sort-menu--show" : "sort-menu"}
+                                setSortOption={setSortOption}
+                            />
                         </div>
                     </OutsideHandler>
                 </div>
