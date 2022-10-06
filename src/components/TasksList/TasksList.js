@@ -10,7 +10,7 @@ const TasksList = ({tasks}) => {
         <div className="tasks-wrapper">
             {tasks.map((task) => {
                 return (
-                    <Task task={task} key={task.id}/>
+                    <Task task={task} key={task.id} showInfo={true}/>
                 )
             })}
         </div>

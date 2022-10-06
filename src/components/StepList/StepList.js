@@ -8,7 +8,7 @@ import Step from "../Step/Step";
 
 
 const StepList = () => {
-    const {task, taskId} = useContext(taskContext)
+    const {task} = useContext(taskContext)
     const {updateDocument} = useFirestore("tasks");
 
     const deleteStep = async (id) => {
@@ -16,6 +16,7 @@ const StepList = () => {
             steps: task.steps.filter((step) => step.createdAt !== id)
         })
     }
+
     const completeStep = async (id) => {
         const newSteps = task.steps.map((step) => {
             if (Number(step.createdAt) === Number(id)) {
@@ -27,16 +28,21 @@ const StepList = () => {
 
             return {...step};
         })
-        await updateDocument(taskId, {
+        await updateDocument(task.id, {
             steps: newSteps
         })
     }
+
     return (
         <div>
             {
-                task.steps.map(step => <Step key={step.createdAt} step={step}
-                                             completeStep={() => completeStep(step.createdAt)}
-                                             deleteStep={() => deleteStep(step.createdAt)}/>)
+                task.steps.map(step =>
+                    <Step
+                        key={step.createdAt} step={step}
+                        completeStep={completeStep}
+                        deleteStep={deleteStep}
+                    />
+                )
             }
         </div>
     );

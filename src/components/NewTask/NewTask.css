@@ -30,6 +30,7 @@
     height: 1.6rem;
     border-radius: 100%;
     flex-shrink: 0;
+    cursor: pointer;
     border: 1px solid var(--primary-color);
 }
 

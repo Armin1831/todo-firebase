@@ -19,16 +19,22 @@ const Main = () => {
     const {tasks, error} = useContext(tasksContext);
     const {uiState: {isLeftSidebarOpen}, uiStateHandler} = useContext(UiContext);
     const [openCompletedTasks, setOpenCompletedTasks] = useState(false);
-    const [sortOption, setSortOption] = useState("");
+    const [sortOption, setSortOption] = useState({});
     const [completedTasks, setCompletedTasks] = useState([]);
     const [notCompletedTasks, setNotCompletedTasks] = useState([]);
     const tasksListRef = useRef(tasksListId);
     const navigate = useNavigate();
 
     const getSortOption = (sortOption) => {
-        setSortOption(sortOption)
+        setSortOption(prevState => {
+            return {
+                ...prevState,
+                [tasksListRef.current]: sortOption
+            }
+        })
         uiStateHandler("isSortMenuOpen")
     }
+
     useEffect(() => {
         if (tasksListId !== "id") {
             tasksListRef.current = tasksListId
@@ -39,20 +45,19 @@ const Main = () => {
         }
     }, [tasksListId, navigate]);
 
+
     useEffect(() => {
         const {notCompletedTasks, completedTasks} =
             getCompleteAndNotCompleteTasks(tasks, tasksListRef.current);
         if (sortOption !== "") {
             const [notACompletedTasks, completedATasks] =
-                getSortedTasks([notCompletedTasks, completedTasks], sortOption)
+                getSortedTasks([notCompletedTasks, completedTasks], sortOption[tasksListRef.current])
             setCompletedTasks(completedATasks)
             setNotCompletedTasks(notACompletedTasks)
         }
         setCompletedTasks(completedTasks)
         setNotCompletedTasks(notCompletedTasks)
     }, [tasks, tasksListId, sortOption]);
-
-
 
 
     return (

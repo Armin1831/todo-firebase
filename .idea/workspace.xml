@@ -3,21 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="67d325d9-4fab-4605-9eb2-14fdba227f93" name="Changes" comment="detail page cheng">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/images/icons/creation-date.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/icons/creation-date.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/styls/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styls/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DetailOptions/DetailOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailOptions/DetailOptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListOptions/ListOptions.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListOptions/ListOptions.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader/MainHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewStep/NewStep.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewStep/NewStep.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewTask/NewTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SortOptions/SortOptions.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SortOptions/SortOptions.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SortOptions/SortOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SortOptions/SortOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Step/Step.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Step/Step.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StepList/StepList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StepList/StepList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Task/Task.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/tasksContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/tasksContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TasksList/TasksList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TodoDetails/TodoDetails.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/dateOptionsUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/dateOptionsUtils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +199,8 @@
       <workItem from="1664961039499" duration="11046000" />
       <workItem from="1664982969647" duration="8729000" />
       <workItem from="1664995428956" duration="7256000" />
+      <workItem from="1665059340237" duration="194000" />
+      <workItem from="1665067190128" duration="8571000" />
     </task>
     <task id="LOCAL-00001" summary="detail page cheng">
       <created>1664890230328</created>
