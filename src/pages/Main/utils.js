@@ -45,6 +45,25 @@ export const getCompleteAndNotCompleteTasks = (tasks, list) => {
         notCompletedTasks
     }
 }
+export const getSearchedTasks = (tasks, search) => {
+    const completedTasks = []
+    const notCompletedTasks = []
+
+    if (search) {
+        tasks.forEach(task => {
+            if (task.text.toLowerCase().includes(search)) {
+                if (task.isCompleted) {
+                    completedTasks.push(task)
+                } else notCompletedTasks.push(task)
+            }
+        })
+    }
+    return {
+        completedTasks,
+        notCompletedTasks
+    }
+}
+
 
 export const getSortedTasks = (tasks, sortOption) => {
     tasks.forEach(tasks => {

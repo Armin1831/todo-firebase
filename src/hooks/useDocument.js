@@ -13,14 +13,19 @@ const useCollection = (collectionName, id) => {
         const document = doc(collRef, id)
 
         const unsubscribe = onSnapshot(document, (querySnapshot) => {
-            if (querySnapshot.data()) {
-                setData({...querySnapshot.data(), id: querySnapshot.id})
-                setError("")
+            try {
+                if (querySnapshot.data()) {
+                    setData({...querySnapshot.data(), id: querySnapshot.id})
+                    setError("")
+                }
+                if (!querySnapshot.data()) throw new Error("no data found")
+            } catch (e) {
+                setError(e.message)
             }
         }, (error) => {
-            setError("failed to get document")
-            console.log(error.message)
+            setError(error.message)
         });
+
 
         return () => unsubscribe()
 

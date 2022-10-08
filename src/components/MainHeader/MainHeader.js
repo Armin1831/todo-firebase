@@ -11,7 +11,7 @@ import ListOptions from "../ListOptions/ListOptions";
 import SortOptions from "../SortOptions/SortOptions";
 
 
-const MainHeader = ({name, logo: Logo, setSortOption}) => {
+const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false}) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
 
     return (
@@ -19,35 +19,46 @@ const MainHeader = ({name, logo: Logo, setSortOption}) => {
             <div className="container">
                 <div className="main-header">
                     <div className="main-header_left">
-                        <span className="main-header_menu-logo" onClick={() => uiStateHandler("isLeftSidebarOpen")}>
-                            <Logo style={{color: "#3f3e3e", width: "24px", height: "24px"}}/>
-                        </span>
+                        {Logo &&
+                            <span
+                                className="main-header_menu-logo"
+                                onClick={() => uiStateHandler("isLeftSidebarOpen")}
+                            >
+                                <Logo style={{color: "#3f3e3e", width: "24px", height: "24px"}}/>
+                            </span>
+                        }
                         <h2 className="main-header_title">{name}</h2>
-                        <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
-                            <div className="list-option">
-                                <div className="logo-wrapper"
-                                     onClick={() => uiStateHandler("isListOptionsOpen")}
-                                >...
+                        {!hideOptions &&
+                            <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
+                                <div className="list-option">
+                                    <div className="logo-wrapper"
+                                         onClick={() => uiStateHandler("isListOptionsOpen")}
+                                    >...
+                                    </div>
+                                    <ListOptions
+                                        className={uiState.isListOptionsOpen ?
+                                            "list-menu list-menu--show" : "list-menu"}/>
                                 </div>
-                                <ListOptions
-                                    className={uiState.isListOptionsOpen ? "list-menu list-menu--show" : "list-menu"}/>
+                            </OutsideHandler>
+                        }
+                    </div>
+                    {!hideOptions &&
+                        <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
+                            <div className="main-header_right">
+                                <div className="sort"
+                                     onClick={() => uiStateHandler("isSortMenuOpen")}
+                                >
+                                    <SortLogo/>
+                                    <span className="main-header_sort">Sort</span>
+                                </div>
+                                <SortOptions
+                                    className={uiState.isSortMenuOpen ?
+                                        "sort-menu sort-menu--show" : "sort-menu"}
+                                    setSortOption={setSortOption}
+                                />
                             </div>
                         </OutsideHandler>
-                    </div>
-                    <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
-                        <div className="main-header_right">
-                            <div className="sort"
-                                 onClick={() => uiStateHandler("isSortMenuOpen")}
-                            >
-                                <SortLogo/>
-                                <span className="main-header_sort">Sort</span>
-                            </div>
-                            <SortOptions
-                                className={uiState.isSortMenuOpen ? "sort-menu sort-menu--show" : "sort-menu"}
-                                setSortOption={setSortOption}
-                            />
-                        </div>
-                    </OutsideHandler>
+                    }
                 </div>
             </div>
         </section>

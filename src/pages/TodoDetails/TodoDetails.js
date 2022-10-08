@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import useFirestore from "../../hooks/useFirestore";
 import {taskContext} from "../../context/taskContext";
@@ -19,6 +19,15 @@ const TodoDetails = ({path}) => {
     const navigate = useNavigate();
     const {task, error} = useContext(taskContext)
     const {deleteDocument} = useFirestore("tasks");
+
+    useEffect(() => {
+        if (error === "no data found") {
+            navigate("/tasks/inbox")
+        }
+        if (path.includes("id")) {
+            navigate("/tasks/inbox")
+        }
+    }, [error, navigate, path]);
 
     const handleDeleteTodo = async () => {
         navigate(path)

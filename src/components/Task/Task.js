@@ -48,8 +48,8 @@ const Task = ({className, task, showInfo}) => {
                         <span onClick={() => completeTask(task)}><DoneLogo/></span> :
                         <span className="new-task-top__circle" onClick={() => completeTask(task)}/>
                     }
-                    <Link to={`/tasks/id/${task.id}`} style={{width:"100%"}}>
-                        <div className="task-info">
+                    <Link to={showInfo ? `id/${task.id}` : ''} style={{width: "100%"}}>
+                        <div className="task-info" style={{width: "100%"}}>
                             <p className="task__content">{task.text}</p>
                             {showInfo &&
                                 <div className="task-info__bottom">
