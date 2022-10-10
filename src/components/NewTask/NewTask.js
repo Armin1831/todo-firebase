@@ -24,16 +24,20 @@ const NewTask = ({list}) => {
     });
     const {user: {user}} = useContext(userContext);
     const {createDocument} = useFirestore("tasks");
+
+
     useEffect(() => {
         setDueDate(null)
         setReminderDate(null)
         setRepeatDate(null)
-    },[list]);
+    },[list.id]);
+
     const openNewTaskMenu = (e) => {
         setOpenNewTaskMenus({
             ReminderMenu: false, RepeatMenu: false, DueMenu: false, [e]: !openNewTaskMenus[e]
         })
-    }
+    };
+
     const updateSomeDates = (title) => (timeObj) => {
         switch (title) {
             case "Reminder":
@@ -59,14 +63,14 @@ const NewTask = ({list}) => {
                 constructionTime: new Date().getTime(),
                 userCreator: user.uid,
                 isCompleted: false,
-                isImportant: list === "important",
-                isInMyDay: list === "my_day",
+                isImportant: list.id === "important",
+                isInMyDay: list.id === "my_day",
                 lists: dueDate ?
-                    [...new Set(["inbox", "planned", list])] : list === "inbox" ?
-                        ["inbox"] : [...new Set([list, "inbox"])],
+                    [...new Set(["inbox", "planned", list.id])] : list.id === "inbox" ?
+                        ["inbox"] : [...new Set([list.id, "inbox"])],
                 reminder: reminderDate ? Timestamp.fromDate(reminderDate) : "",
                 dueDate: dueDate ?
-                    Timestamp.fromDate(dueDate) : list === "planned" ?
+                    Timestamp.fromDate(dueDate) : list.id === "planned" ?
                         Timestamp.fromDate(new Date()) : ""
                 ,
                 repeat: repeatDate ? repeatDate : "",

@@ -3,7 +3,7 @@ import {ReactComponent as PersonLogo} from "../../assets/images/icons/person-log
 import {ReactComponent as CalenderLogo} from "../../assets/images/icons/calendar-logo.svg";
 import {ReactComponent as StarLogo} from "../../assets/images/icons/star-logo.svg";
 import {ReactComponent as SunLogo} from "../../assets/images/icons/sun-logo.svg";
-import {ReactComponent as SidebarLogo} from "../../assets/images/icons/sidebar-logo.svg";
+import {ReactComponent as SidebarLogo} from "../../assets/images/icons/new-lists-logo.svg";
 
 export const getLogo = (list) => {
     switch (list) {
@@ -24,10 +24,8 @@ export const getLogo = (list) => {
 
 
 export const getTitle = (list) => {
-    const title = list === "inbox" ? "Tasks" : list.replaceAll("_", " ")[0].toUpperCase()
-        + list.replaceAll("_", " ").slice(1);
-
-    return title;
+    return list.id === "inbox" ? "Tasks" : list.name.replaceAll("_", " ")[0].toUpperCase()
+        + list.name.replaceAll("_", " ").slice(1);
 };
 
 export const getCompleteAndNotCompleteTasks = (tasks, list) => {
@@ -116,7 +114,7 @@ export const getSortedTasks = (tasks, sortOption) => {
                 })
                 break;
             default:
-                break;
+                return tasks;
         }
     })
 

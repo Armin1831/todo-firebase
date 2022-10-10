@@ -3,7 +3,7 @@ import {db} from "../firebase/firebase.config";
 import {collection, onSnapshot, doc} from "firebase/firestore";
 
 
-const useCollection = (collectionName, id) => {
+const useDocument = (collectionName, id) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
@@ -35,4 +35,4 @@ const useCollection = (collectionName, id) => {
 }
 
 
-export default useCollection;
+export default useDocument;

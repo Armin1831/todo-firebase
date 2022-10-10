@@ -5,10 +5,16 @@
 }
 
 
-
-
-
-
+.is-sorted {
+    margin-bottom: -1.7rem;
+    margin-top: .7rem;
+    justify-content: right;
+    font-family: Roboto-Medium, sans-serif;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
 
 /* completed tasks*/
@@ -17,7 +23,6 @@
 .completed-tasks {
     margin-top: 1.7rem;
 }
-
 
 
 .completed-tasks-wrapper {
@@ -40,6 +45,6 @@
 }
 
 
-a{
+a {
     text-decoration: none;
 }

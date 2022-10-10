@@ -1,5 +1,5 @@
 import {db} from "../firebase/firebase.config";
-import {addDoc, collection, doc, updateDoc,deleteDoc } from "firebase/firestore";
+import {addDoc, collection, doc, updateDoc, deleteDoc, writeBatch} from "firebase/firestore";
 
 const useFirestore = (collectionName) => {
     const collRef = collection(db, collectionName)
@@ -30,8 +30,19 @@ const useFirestore = (collectionName) => {
             alert(e.message)
         }
     }
+    const deleteMultipleDocuments = async (docs) => {
+        try {
+            const docsRef = docs.map((document) => doc(collRef, document.id));
+            const batch = writeBatch(db);
+            docsRef.forEach(docRef => batch.delete(docRef));
+            await batch.commit()
+        } catch (e) {
+            console.log(e.message)
+            alert(e.message)
+        }
+    }
 
-    return {createDocument, updateDocument, deleteDocument}
+    return {createDocument, updateDocument, deleteDocument, deleteMultipleDocuments}
 }
 
 

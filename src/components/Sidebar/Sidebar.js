@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
 import {UiContext} from "../../context/uiContext";
 import {tasksContext} from "../../context/tasksContext";
+import {listsContext} from "../../context/listsContext";
 import "./Sidebar.css";
 
 // components
 import SidebarLink from "../Sidebar-Link/SidebarLink";
+import NewList from "../NewList/NewList";
 
 // icons
 import {ReactComponent as SidebarLogo} from "../../assets/images/icons/sidebar-logo.svg";
@@ -13,18 +15,13 @@ import {ReactComponent as StarLogo} from "../../assets/images/icons/star-logo.sv
 import {ReactComponent as CalenderLogo} from "../../assets/images/icons/calendar-logo.svg";
 import {ReactComponent as PersonLogo} from "../../assets/images/icons/person-logo.svg";
 import {ReactComponent as HomeLogo} from "../../assets/images/icons/home-logo.svg";
-import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.svg";
-import {ReactComponent as NewListLogo} from "../../assets/images/icons/new-list.svg";
+import {ReactComponent as NewListsLogo} from "../../assets/images/icons/new-lists-logo.svg";
 
 
 const Sidebar = () => {
     const {uiState, uiStateHandler} = useContext(UiContext);
     const {tasksCount} = useContext(tasksContext);
-
-
-
-
-
+    const {notInitialLists} = useContext(listsContext);
 
 
     return (
@@ -69,21 +66,22 @@ const Sidebar = () => {
             <div className="line-wrapper sidebar__line">
                 <span className="completed-head__line"/>
             </div>
-            <div className="new-list">
-                <div className="new-list__wrapper">
-                    <span className="new-list__new">
-                        <PlusLogo/>
-                    </span>
-                    <input
-                        type="text"
-                        placeholder="New List"
-                        className="new-list__input"
-                    />
-                </div>
-                <span className="new-list__group">
-                    <NewListLogo/>
-                </span>
-            </div>
+            <ul className="sidebar-lists">
+                {
+                    notInitialLists.length > 0 && notInitialLists.map(list => {
+                        return (
+                            <SidebarLink
+                                key={list.id}
+                                title={list.name}
+                                path={`/tasks/${list.id}`}
+                                count={tasksCount[list.id]}
+                                logo={<NewListsLogo/>}
+                            />
+                        )
+                    })
+                }
+            </ul>
+            <NewList/>
         </div>
     );
 };

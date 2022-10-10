@@ -11,7 +11,7 @@ import ListOptions from "../ListOptions/ListOptions";
 import SortOptions from "../SortOptions/SortOptions";
 
 
-const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false}) => {
+const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false, currentList}) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
 
     return (
@@ -37,7 +37,9 @@ const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false}) => {
                                     </div>
                                     <ListOptions
                                         className={uiState.isListOptionsOpen ?
-                                            "list-menu list-menu--show" : "list-menu"}/>
+                                            "list-menu list-menu--show" : "list-menu"}
+                                        currentList={currentList}
+                                    />
                                 </div>
                             </OutsideHandler>
                         }

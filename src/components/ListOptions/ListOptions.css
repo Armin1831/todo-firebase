@@ -8,10 +8,11 @@
     top: -1rem;
     width: 20rem;
     background-color: white;
-    left: -10rem;
+    left: -200%;
     text-align: center;
     padding: 1.5rem 0;
     border-radius: .5rem;
+    box-shadow: 0 0.3px 0.9px var(--bg-shadow), 0 1.6px 3.6px var(--bg-shadow);
 }
 
 .list-menu--show {

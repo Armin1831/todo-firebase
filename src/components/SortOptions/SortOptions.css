@@ -11,6 +11,7 @@
     width: 20rem;
     background-color: white;
     transition: all 150ms ease-in-out;
+    box-shadow: 0 0.3px 0.9px var(--bg-shadow), 0 1.6px 3.6px var(--bg-shadow);
 }
 
 .sort-menu--show {

@@ -11,7 +11,6 @@ const useCollection = (collectionName, _queryWhere = null, _orderByWhat = null) 
     const queryWhere = useRef(_queryWhere).current
     const orderByWhat = useRef(_orderByWhat).current
 
-
     useEffect(() => {
         const collRef = collection(db, collectionName)
         let q ;
@@ -23,17 +22,24 @@ const useCollection = (collectionName, _queryWhere = null, _orderByWhat = null) 
         }
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const data = [];
-            querySnapshot.forEach((doc) => {
-                data.push({
-                    ...doc.data(),
-                    id: doc.id
+            try {
+                if (!querySnapshot) throw new Error("no data found");
+                const data = [];
+                querySnapshot.forEach((doc) => {
+                    data.push({
+                        ...doc.data(),
+                        id: doc.id
+                    });
                 });
-            });
-            setDocs(data)
-            setError("")
+                setDocs(data)
+                setError("")
+
+            }catch (error) {
+                setError(error.message)
+                console.log(error)
+            }
         }, (error) => {
-            setError(error)
+            setError(error.message)
             console.log(error)
         });
 

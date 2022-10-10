@@ -114,7 +114,7 @@
     background-color: white;
     border-radius: .6rem;
     outline: transparent;
-    transition: all 100ms ease-in;
+    transition: all 200ms ease-in;
     box-shadow: rgb(0 0 0 / 13%) 0 3.2px 7.2px 0, rgb(0 0 0 / 11%) 0 0.6px 1.8px 0;
 }
 

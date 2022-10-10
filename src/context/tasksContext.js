@@ -19,7 +19,7 @@ export const tasksContext = createContext(initialState);
 const useTasksContext = () => {
     const {user: {user}} = useContext(userContext);
     const {docs: tasks, error} = useCollection("tasks",
-        ["userCreator", "==", user.uid],["constructionTime","desc"]);
+        ["userCreator", "==", user.uid], ["constructionTime", "desc"]);
     const [tasksCount, setTasksCount] = useState({
         "inbox": 0,
         "my_day": 0,
@@ -42,7 +42,11 @@ const useTasksContext = () => {
             }
             tasks.forEach(task => {
                 task.lists.forEach(list => {
-                    initialTasksCount[list] += 1
+                    if (initialTasksCount[list] === undefined) {
+                        initialTasksCount[list] = 1
+                    }else {
+                        initialTasksCount[list] += 1
+                    }
                 })
             })
             setTasksCount(initialTasksCount)
@@ -50,6 +54,7 @@ const useTasksContext = () => {
         if (tasks.length >= 0) {
             getAllTasksCount(tasks)
         }
+
     }, [tasks]);
 
     return (

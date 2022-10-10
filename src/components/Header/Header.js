@@ -55,6 +55,8 @@ const Header = () => {
                 <CloseLogo
                     onClick={() => {
                         setOpenSearch(false);
+                        setSearch("");
+                        navigate("/tasks/inbox")
                         inputRef.current.style.display = "none";
                     }}
                     className={
