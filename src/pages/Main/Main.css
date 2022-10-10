@@ -48,3 +48,13 @@
 a {
     text-decoration: none;
 }
+
+@media print {
+    body * {
+        display: none;
+    }
+
+    body .print-area, .print-area * {
+        display: block;
+    }
+}

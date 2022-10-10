@@ -1,9 +1,10 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useRef} from "react";
 import {useParams, Outlet, useNavigate} from "react-router-dom";
 import {tasksContext} from "../../context/tasksContext";
 import {UiContext} from "../../context/uiContext";
 import {listsContext} from "../../context/listsContext";
-import {getLogo, getTitle, getCompleteAndNotCompleteTasks, getSortedTasks} from "./utils"
+import {getLogo, getTitle, getCompleteAndNotCompleteTasks, getSortedTasks} from "./utils";
+import {useReactToPrint} from 'react-to-print';
 import "./Main.css";
 
 // components
@@ -15,6 +16,7 @@ import TasksList from "../../components/TasksList/TasksList";
 // icons
 import {ReactComponent as SidebarLogo} from "../../assets/images/icons/new-lists-logo.svg";
 import {ReactComponent as CloseLogo} from "../../assets/images/icons/close-logo.svg";
+import ComponentToPrint from "../ComponentToPrint/ComponentToPrint";
 
 
 const Main = () => {
@@ -28,7 +30,11 @@ const Main = () => {
     const [notCompletedTasks, setNotCompletedTasks] = useState([]);
     const navigate = useNavigate();
     const list = [...initialLists, ...notInitialLists].find(list => list.id === tasksListId);
+    const componentRef = useRef();
 
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
 
     const getSortOption = (sortOption) => {
         setSortOption(prevState => {
@@ -63,12 +69,21 @@ const Main = () => {
             {
                 list &&
                 <>
+                    <div style={{display: "none"}}>
+                        <ComponentToPrint
+                            name={getTitle(list)}
+                            logo={!isLeftSidebarOpen ? SidebarLogo : getLogo(tasksListId)}
+                            tasks={[...completedTasks, ...notCompletedTasks]}
+                            ref={componentRef}
+                        />
+                    </div>
                     <main className="main">
                         <MainHeader
                             name={getTitle(list)}
                             logo={!isLeftSidebarOpen ? SidebarLogo : getLogo(tasksListId)}
                             setSortOption={getSortOption}
                             currentList={list}
+                            handlePrint={handlePrint}
                         />
                         {sortOption[tasksListId] &&
                             <div className="container is-sorted">
@@ -93,7 +108,9 @@ const Main = () => {
                             </div>
                         )}
                         {tasks.length > 0 &&
-                            <div className="all-tasks">
+                            <div
+                                className="all-tasks"
+                            >
                                 {notCompletedTasks.length > 0 &&
                                     <section className="tasks">
                                         <div className="container">
@@ -110,7 +127,8 @@ const Main = () => {
                                                 num={completedTasks.length}
                                             />
                                             <div
-                                                className={openCompletedTasks ? "completed-tasks-wrapper completed-tasks-wrapper--show"
+                                                className={openCompletedTasks ?
+                                                    "completed-tasks-wrapper completed-tasks-wrapper--show"
                                                     : "completed-tasks-wrapper"}
                                             >
                                                 <TasksList tasks={completedTasks}/>

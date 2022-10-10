@@ -11,7 +11,16 @@ import ListOptions from "../ListOptions/ListOptions";
 import SortOptions from "../SortOptions/SortOptions";
 
 
-const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false, currentList}) => {
+const MainHeader = (
+    {
+        name,
+        logo: Logo,
+        setSortOption,
+        hideOptions = false,
+        currentList,
+        handlePrint
+    }) =>
+{
     const {uiState, uiStateHandler} = useContext(UiContext);
 
     return (
@@ -21,13 +30,13 @@ const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false, curre
                     <div className="main-header_left">
                         {Logo &&
                             <span
-                                className="main-header_menu-logo"
+                                className="main-header_menu-logo "
                                 onClick={() => uiStateHandler("isLeftSidebarOpen")}
                             >
                                 <Logo style={{color: "#3f3e3e", width: "24px", height: "24px"}}/>
                             </span>
                         }
-                        <h2 className="main-header_title">{name}</h2>
+                        <h2 className="main-header_title ">{name}</h2>
                         {!hideOptions &&
                             <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
                                 <div className="list-option">
@@ -39,6 +48,7 @@ const MainHeader = ({name, logo: Logo, setSortOption, hideOptions = false, curre
                                         className={uiState.isListOptionsOpen ?
                                             "list-menu list-menu--show" : "list-menu"}
                                         currentList={currentList}
+                                        handlePrint={handlePrint}
                                     />
                                 </div>
                             </OutsideHandler>

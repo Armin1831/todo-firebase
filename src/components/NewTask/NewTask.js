@@ -105,7 +105,7 @@ const NewTask = ({list}) => {
 
 
     return (
-        <section className="new-task">
+        <section className="new-task ">
             <div className="container">
                 <div className="new-task-wrapper ">
                     <div className="new-task-top">

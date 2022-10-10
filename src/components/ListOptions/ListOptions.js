@@ -13,7 +13,7 @@ import {tasksContext} from "../../context/tasksContext";
 import {UiContext} from "../../context/uiContext";
 
 
-const ListOptions = ({className, currentList}) => {
+const ListOptions = ({className, currentList, handlePrint}) => {
     const {deleteDocument} = useFirestore("lists");
     const {deleteMultipleDocuments} = useFirestore("tasks");
     const {uiStateHandler} = useContext(UiContext);
@@ -31,7 +31,10 @@ const ListOptions = ({className, currentList}) => {
         await deleteMultipleDocuments(currentTasks)
         await deleteDocument(currentList.id)
     }
-
+    const handlePrintList = () => {
+        uiStateHandler("isListOptionsOpen")
+        handlePrint()
+    }
     return (
         <div id="listMenu" className={className}>
             <h4 className="list-menu_title">list options</h4>
@@ -41,7 +44,9 @@ const ListOptions = ({className, currentList}) => {
                     <span className="menu-option_title">Change theme</span>
                     <RightArrowLogo/>
                 </li>
-                <li className="menu-option_items">
+                <li className="menu-option_items"
+                    onClick={handlePrintList}
+                >
                     <PrintLogo/>
                     <span className="menu-option_title">Print list</span>
                 </li>
