@@ -3,6 +3,7 @@ import "./App.css";
 import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {userContext} from "./context/userContext";
 import TasksContext from "./context/tasksContext";
+import ListsContext from "./context/listsContext";
 
 // components
 import Layout from "./components/Layout/Layout";
@@ -18,8 +19,10 @@ function App() {
         <Routes>
             <Route path="/" element={<ProtectedRoute user={user.user}/>}>
                 <Route element={<TasksContext/>}>
-                    <Route index element={<Navigate to="tasks/inbox" replace/>}/>
-                    <Route path="tasks/*" element={<Layout/>}/>
+                    <Route element={<ListsContext/>}>
+                        <Route index element={<Navigate to="tasks/inbox" replace/>}/>
+                        <Route path="tasks/*" element={<Layout/>}/>
+                    </Route>
                 </Route>
             </Route>
             <Route path="/" element={<CommonRoute user={user.user}/>}>

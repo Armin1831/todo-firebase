@@ -1,6 +1,7 @@
 import React, {createContext, useContext} from 'react';
 import {userContext} from "./userContext";
 import useCollection from "../hooks/useCollection";
+import {Outlet} from "react-router-dom";
 
 const initialLists = [
     {
@@ -38,7 +39,7 @@ const initialState = {
 export const listsContext = createContext(initialState);
 
 
-const useListsContext = ({children}) => {
+const useListsContext = () => {
     const {user: {user}} = useContext(userContext);
     const {docs: lists} = useCollection("lists", ["userCreator", "==", user.uid]);
 
@@ -47,7 +48,7 @@ const useListsContext = ({children}) => {
         <listsContext.Provider
             value={{notInitialLists: lists, initialLists}}
         >
-            {children}
+            <Outlet/>
         </listsContext.Provider>
     );
 };

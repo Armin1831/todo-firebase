@@ -49,6 +49,7 @@ const useUserContext = ({children}) => {
                     authIsReady: true
                 }
             })
+
             unSub()
         },error => {
             console.log(error)
