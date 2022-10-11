@@ -39,7 +39,7 @@ const MainHeader = (
                         <h2 className="main-header_title ">{name}</h2>
                         {!hideOptions &&
                             <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
-                                <div className="list-option">
+                                <div className="list-option print-display-none">
                                     <div className="logo-wrapper"
                                          onClick={() => uiStateHandler("isListOptionsOpen")}
                                     >...
@@ -56,7 +56,7 @@ const MainHeader = (
                     </div>
                     {!hideOptions &&
                         <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
-                            <div className="main-header_right">
+                            <div className="main-header_right print-display-none">
                                 <div className="sort"
                                      onClick={() => uiStateHandler("isSortMenuOpen")}
                                 >

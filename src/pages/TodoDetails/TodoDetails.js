@@ -33,7 +33,8 @@ const TodoDetails = ({path}) => {
         navigate(path)
         try {
             if (task.file.name !== "") {
-                const fileRef = ref(storage, `tasksFiles/${task.userCreator}/${task.id}/${task.file.name}`);
+                const fileRef = ref(storage,
+                    `tasksFiles/${task.userCreator}/${task.id}/${task.file.name}`);
                 await deleteObject(fileRef)
             }
             await deleteDocument(task.id)

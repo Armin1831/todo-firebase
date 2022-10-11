@@ -54,6 +54,14 @@ a {
         display: none;
     }
 
+    .print-display-none {
+        display: none !important;
+    }
+
+    .print-display-flex {
+        display: flex !important;
+    }
+
     body .print-area, .print-area * {
         display: block;
     }

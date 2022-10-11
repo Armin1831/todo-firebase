@@ -12,7 +12,7 @@ const CompletedHead = ({toggleTasks, openCompletedTasks,num}) => {
 
 
     return (
-        <div className="completed-head-wrapper" onClick={handleToggleTasks}>
+        <div className="completed-head-wrapper print-display-none" onClick={handleToggleTasks}>
             <div className="completed-head">
                 <RightArrowLogo
                     className={openCompletedTasks ? "completed-head__icon completed-head__icon--open" : "completed-head__icon"}/>

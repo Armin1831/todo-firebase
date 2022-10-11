@@ -30,7 +30,7 @@ const NewTask = ({list}) => {
         setDueDate(null)
         setReminderDate(null)
         setRepeatDate(null)
-    },[list.id]);
+    }, [list.id]);
 
     const openNewTaskMenu = (e) => {
         setOpenNewTaskMenus({
@@ -105,7 +105,7 @@ const NewTask = ({list}) => {
 
 
     return (
-        <section className="new-task ">
+        <section className="new-task print-display-none ">
             <div className="container">
                 <div className="new-task-wrapper ">
                     <div className="new-task-top">

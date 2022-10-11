@@ -13,7 +13,6 @@ import StepList from "../StepList/StepList";
 
 
 const TodoInformation = () => {
-
     return (
         <div className="details-wrapper">
             <div className="steps">

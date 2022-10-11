@@ -16,7 +16,6 @@ import TasksList from "../../components/TasksList/TasksList";
 // icons
 import {ReactComponent as SidebarLogo} from "../../assets/images/icons/new-lists-logo.svg";
 import {ReactComponent as CloseLogo} from "../../assets/images/icons/close-logo.svg";
-import ComponentToPrint from "../ComponentToPrint/ComponentToPrint";
 
 
 const Main = () => {
@@ -69,15 +68,7 @@ const Main = () => {
             {
                 list &&
                 <>
-                    <div style={{display: "none"}}>
-                        <ComponentToPrint
-                            name={getTitle(list)}
-                            logo={!isLeftSidebarOpen ? SidebarLogo : getLogo(tasksListId)}
-                            tasks={[...completedTasks, ...notCompletedTasks]}
-                            ref={componentRef}
-                        />
-                    </div>
-                    <main className="main">
+                    <main className="main print-area" ref={componentRef}>
                         <MainHeader
                             name={getTitle(list)}
                             logo={!isLeftSidebarOpen ? SidebarLogo : getLogo(tasksListId)}
@@ -86,7 +77,7 @@ const Main = () => {
                             handlePrint={handlePrint}
                         />
                         {sortOption[tasksListId] &&
-                            <div className="container is-sorted">
+                            <div className="container is-sorted print-display-none">
                                 sorted by {sortOption[tasksListId].toLowerCase()}
                                 <CloseLogo
                                     onClick={() => setSortOption(prevState => {

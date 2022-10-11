@@ -11,10 +11,12 @@
 
 html {
     height: 100%;
+    min-height: 100vh;
 }
 
 #root {
     height: 100%;
+    min-height: 100vh;
 }
 
 body {
@@ -23,6 +25,7 @@ body {
     font-family: Roboto-Regular, serif !important;
     margin: 0;
     height: 100%;
+    min-height: 100vh;
     overflow: hidden;
 }
 

@@ -43,7 +43,7 @@ const Task = ({className, task, showInfo}) => {
         <>
             {
                 task &&
-                <div className={className ? "task detail-task" : "task"}>
+                <div className={className ? "task detail-task" : "task print-display-flex"}>
                     {task.isCompleted ?
                         <span onClick={() => completeTask(task)}><DoneLogo/></span> :
                         <span className="new-task-top__circle" onClick={() => completeTask(task)}/>
@@ -52,20 +52,20 @@ const Task = ({className, task, showInfo}) => {
                         <div className="task-info" style={{width: "100%"}}>
                             <p className="task__content">{task.text}</p>
                             {showInfo &&
-                                <div className="task-info__bottom">
+                                <div className="task-info__bottom print-display-flex">
                                     {task.steps.length > 0 &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             {task.steps.filter(step => step.isCompleted).length} of {task.steps.length}
                                         </span>
                                     }
                                     {task.repeat !== "" &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             <RecurringLogo style={{width: "16px", height: "16px"}}/>
                                             {task.repeat}
                                         </span>
                                     }
                                     {task.reminder !== "" &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             <ReminderLogo style={{width: "16px", height: "16px"}}/>
                                             {task.reminder !== "" ?
                                                 task.reminder.toDate().getDay() === myDate.date.getDay() + 1 ?
@@ -75,7 +75,7 @@ const Task = ({className, task, showInfo}) => {
                                         </span>
                                     }
                                     {task.dueDate !== "" &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             <DueDateLogo style={{width: "16px", height: "16px"}}/>
                                             {task.dueDate !== "" ?
                                                 task.dueDate.toDate().getDay() === myDate.date.getDay() + 1 ?
@@ -85,7 +85,7 @@ const Task = ({className, task, showInfo}) => {
                                         </span>
                                     }
                                     {task.isInMyDay &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             <SunLogo style={{width: "16px", height: "16px"}}/>
                                             My Day
                                         </span>
@@ -94,7 +94,7 @@ const Task = ({className, task, showInfo}) => {
                                         task.categories.map(category => (
                                             <span
                                                 key={category.name}
-                                                className="task-info__steps" style={{color: category.color}}>
+                                                className="task-info__steps print-display-flex" style={{color: category.color}}>
                                                 <span className="task-info__category"
                                                       style={{
                                                           backgroundColor: category.color,
@@ -106,13 +106,13 @@ const Task = ({className, task, showInfo}) => {
                                         ))
                                     }
                                     {task.file.name !== "" &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             <AddFileLogo style={{width: "16px", height: "16px"}}/>
                                             File attached
                                         </span>
                                     }
                                     {task.note !== "" &&
-                                        <span className="task-info__steps">
+                                        <span className="task-info__steps print-display-flex">
                                             <NoteLogo style={{width: "16px", height: "16px"}}/>
                                             Note
                                         </span>
