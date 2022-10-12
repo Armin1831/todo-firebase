@@ -9,6 +9,7 @@ import TodoDetails from "../../pages/TodoDetails/TodoDetails";
 import TaskContext from "../../context/taskContext";
 import Main from "../../pages/Main/Main";
 import Search from "../../pages/Search/Search";
+import ColorContext from "../../context/colorContext";
 
 
 const Layout = () => {
@@ -53,11 +54,13 @@ const Layout = () => {
                             </Route>
                         </Route>
                     </Route>
-                    <Route path=":tasksListId/*" element={<Main/>}>
-                        <Route path="id">
-                            <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
-                            <Route path=":taskId" element={<TaskContext/>}>
-                                <Route index element={<TodoDetails path={pathRef.current}/>}/>
+                    <Route element={<ColorContext/>}>
+                        <Route path=":tasksListId/*" element={<Main/>}>
+                            <Route path="id">
+                                <Route index element={<Navigate to="/tasks/inbox" replace/>}/>
+                                <Route path=":taskId" element={<TaskContext/>}>
+                                    <Route index element={<TodoDetails path={pathRef.current}/>}/>
+                                </Route>
                             </Route>
                         </Route>
                     </Route>

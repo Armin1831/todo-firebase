@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import {arrayRemove, arrayUnion} from "firebase/firestore"
 import useFirestore from "../../hooks/useFirestore";
 import {myDate} from "../../utils/dateOptionsUtils";
+import {colorContext} from "../../context/colorContext";
 import "./Task.css";
 
 // icons
@@ -19,6 +20,7 @@ import {ReactComponent as NoteLogo} from "../../assets/images/icons/note-logo.sv
 
 const Task = ({className, task, showInfo}) => {
     const {updateDocument} = useFirestore("tasks");
+    const {currentColor} = useContext(colorContext);
 
     const completeTask = async (task) => {
         if (task.dueDate !== "") {
@@ -45,8 +47,13 @@ const Task = ({className, task, showInfo}) => {
                 task &&
                 <div className={className ? "task detail-task" : "task print-display-flex"}>
                     {task.isCompleted ?
-                        <span onClick={() => completeTask(task)}><DoneLogo/></span> :
-                        <span className="new-task-top__circle" onClick={() => completeTask(task)}/>
+                        <span onClick={() => completeTask(task)}>
+                            <DoneLogo style={{color: currentColor}}/>
+                        </span> :
+                        <span
+                            className="new-task-top__circle"
+                            style={{borderColor: currentColor}}
+                            onClick={() => completeTask(task)}/>
                     }
                     <Link to={showInfo ? `id/${task.id}` : ''} style={{width: "100%"}}>
                         <div className="task-info" style={{width: "100%"}}>
@@ -94,7 +101,8 @@ const Task = ({className, task, showInfo}) => {
                                         task.categories.map(category => (
                                             <span
                                                 key={category.name}
-                                                className="task-info__steps print-display-flex" style={{color: category.color}}>
+                                                className="task-info__steps print-display-flex"
+                                                style={{color: category.color}}>
                                                 <span className="task-info__category"
                                                       style={{
                                                           backgroundColor: category.color,
@@ -122,7 +130,9 @@ const Task = ({className, task, showInfo}) => {
                         </div>
                     </Link>
                     <span className="task__isImportant" onClick={() => importTask(task)}>
-                        {task.isImportant ? <StarFillLogo/> : <StarLogo/>}
+                        {task.isImportant ?
+                            <StarFillLogo style={{color: currentColor}}/> :
+                            <StarLogo style={{color: currentColor}}/>}
                     </span>
                 </div>
             }

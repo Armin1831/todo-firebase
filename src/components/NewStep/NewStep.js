@@ -1,14 +1,16 @@
 import React, {useContext, useState} from 'react';
 import {taskContext} from "../../context/taskContext";
-import "./NewStep.css"
+import {colorContext} from "../../context/colorContext";
 import useFirestore from "../../hooks/useFirestore";
+import "./NewStep.css"
 
 //icons
 import {ReactComponent as PlusLogo} from "../../assets/images/icons/plus-logo.svg";
 
 
 const NewStep = () => {
-    const {task} = useContext(taskContext)
+    const {task} = useContext(taskContext);
+    const {currentColor} = useContext(colorContext);
     const [step, setStep] = useState("");
     const {updateDocument} = useFirestore("tasks");
 
@@ -27,8 +29,11 @@ const NewStep = () => {
 
     return (
         <div className="new-task-top new-step">
-            <PlusLogo onClick={() => addNewStep()}/>
-            <span className="new-task-top__circle hide"/>
+            <PlusLogo style={{color: currentColor}} onClick={() => addNewStep()}/>
+            <span
+                className="new-task-top__circle hide"
+                style={{color: currentColor}}
+            />
             <input
                 type="text"
                 placeholder={task.steps.length ? "Next step" : "Add step"}

@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {UiContext} from "../../context/uiContext";
+import {colorContext} from "../../context/colorContext";
 import "./MainHeader.css"
 
 // components
@@ -19,9 +20,10 @@ const MainHeader = (
         hideOptions = false,
         currentList,
         handlePrint
-    }) =>
-{
+    }) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
+    const {currentColor} = useContext(colorContext);
+
 
     return (
         <section className="todo-header">
@@ -33,10 +35,15 @@ const MainHeader = (
                                 className="main-header_menu-logo "
                                 onClick={() => uiStateHandler("isLeftSidebarOpen")}
                             >
-                                <Logo style={{color: "#3f3e3e", width: "24px", height: "24px"}}/>
+                                <Logo style={{color: currentColor, width: "24px", height: "24px"}}/>
                             </span>
                         }
-                        <h2 className="main-header_title ">{name}</h2>
+                        <h2
+                            className="main-header_title"
+                            style={{color: currentColor}}
+                        >
+                            {name}
+                        </h2>
                         {!hideOptions &&
                             <OutsideHandler uiState={uiState} uiStateHandler={uiStateHandler}>
                                 <div className="list-option print-display-none">
@@ -60,8 +67,13 @@ const MainHeader = (
                                 <div className="sort"
                                      onClick={() => uiStateHandler("isSortMenuOpen")}
                                 >
-                                    <SortLogo/>
-                                    <span className="main-header_sort">Sort</span>
+                                    <SortLogo style={{color: currentColor}}/>
+                                    <span
+                                        className="main-header_sort"
+                                        style={{color: currentColor}}
+                                    >
+                                        Sort
+                                    </span>
                                 </div>
                                 <SortOptions
                                     className={uiState.isSortMenuOpen ?

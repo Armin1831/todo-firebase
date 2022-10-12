@@ -46,6 +46,12 @@
     gap: 1rem;
 }
 
+.menu-option__colors {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .menu-option_items:hover {
     background-color: #dddee0;
 }
@@ -53,4 +59,31 @@
 .menu-option_title {
     margin-right: 1.6rem;
     font-family: Roboto-Regular, sans-serif;
+}
+
+.pick-color {
+    display: none;
+    left: 99%;
+    top: -1rem;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: 0 0.3px 0.9px var(--bg-shadow), 0 1.6px 3.6px var(--bg-shadow);
+    padding: 2.5rem 2rem;
+    gap: 1rem;
+}
+
+.pick-color--show {
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.pick-color__items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+    background-color: #3d3c3c;
 }

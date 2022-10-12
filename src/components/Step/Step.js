@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {colorContext} from "../../context/colorContext";
 import "./Step.css";
 
 
@@ -8,6 +9,7 @@ import {ReactComponent as CloseLogo} from "../../assets/images/icons/close-logo.
 
 
 const Step = ({step, deleteStep, completeStep}) => {
+    const {currentColor} = useContext(colorContext);
 
 
     return (
@@ -19,9 +21,12 @@ const Step = ({step, deleteStep, completeStep}) => {
                             <span
                                 style={{cursor: "pointer"}}
                                 onClick={() => completeStep(step.createdAt)}>
-                                <DoneLogo/>
+                                <DoneLogo style={{color: currentColor}}/>
                             </span> :
-                            <span className="new-task-top__circle" onClick={() => completeStep(step.createdAt)}/>
+                            <span
+                                style={{borderColor: currentColor}}
+                                className="new-task-top__circle"
+                                onClick={() => completeStep(step.createdAt)}/>
                         }
                         <p className="step__content">{step.text}</p>
                         <span className="task__isImportant" onClick={() => deleteStep(step.createdAt)}>

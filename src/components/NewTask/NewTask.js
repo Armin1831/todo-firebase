@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import useFirestore from "../../hooks/useFirestore";
 import {userContext} from "../../context/userContext";
+import {colorContext} from "../../context/colorContext";
 import DetailOptionMenu from "../DetailOptionMenu/DetailOptionMenu";
 import {detailOptionMenu, myDate} from "../../utils/dateOptionsUtils";
 import {Timestamp} from "firebase/firestore";
@@ -22,6 +23,7 @@ const NewTask = ({list}) => {
     const [openNewTaskMenus, setOpenNewTaskMenus] = useState({
         ReminderMenu: false, RepeatMenu: false, DueMenu: false
     });
+    const {currentColor} = useContext(colorContext);
     const {user: {user}} = useContext(userContext);
     const {createDocument} = useFirestore("tasks");
 
@@ -56,6 +58,7 @@ const NewTask = ({list}) => {
                 break;
         }
     }
+
     const addNewTask = async () => {
         if (task !== "") {
             const taskData = {
@@ -109,8 +112,11 @@ const NewTask = ({list}) => {
             <div className="container">
                 <div className="new-task-wrapper ">
                     <div className="new-task-top">
-                        <PlusLogo/>
-                        <span className="new-task-top__circle hide"/>
+                        <PlusLogo style={{color: currentColor}}/>
+                        <span
+                            className="new-task-top__circle hide"
+                            style={{color: currentColor}}
+                        />
                         <input
                             type="text"
                             placeholder="Add a task"
@@ -201,8 +207,10 @@ const NewTask = ({list}) => {
                                 </div>
                             </OutsideHandler>
                         </div>
-                        <button className="new-task-bottom__add"
-                                onClick={() => addNewTask()}
+                        <button
+                            className="new-task-bottom__add"
+                            onClick={() => addNewTask()}
+                            style={{color: currentColor}}
                         >
                             Add
                         </button>
