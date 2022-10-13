@@ -1,6 +1,7 @@
 @import "assets/styls/fonts.css";
 @import "assets/styls/reset.css";
 @import "assets/styls/grid.css";
+@import "react-datepicker/dist/react-datepicker.css";
 
 :root {
     font-size: 10px !important;

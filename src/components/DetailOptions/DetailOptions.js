@@ -21,7 +21,8 @@ const DetailOptions = () => {
     const {updateDocument} = useFirestore("tasks")
     const [informationMenus, setInformationMenus] = useState({
         ReminderMenu: false, RepeatMenu: false, DueMenu: false
-    })
+    });
+
     const openInformationMenu = (e) => {
         setInformationMenus({
             ReminderMenu: false,
@@ -60,11 +61,11 @@ const DetailOptions = () => {
         day: null
     }
 
-    const updateSomeDates = (title) => async (timeObject) => {
+    const updateSomeDates = (title) => async (timeObject, close = true) => {
         switch (title) {
             case "Reminder":
                 if (timeObject) {
-                    openInformationMenu("ReminderMenu")
+                    close && openInformationMenu("ReminderMenu")
                     await updateDocument(task.id, {
                         reminder: Timestamp.fromDate(timeObject)
                     })
@@ -76,7 +77,7 @@ const DetailOptions = () => {
                 break;
             case "Due":
                 if (timeObject) {
-                    openInformationMenu("DueMenu")
+                    close && openInformationMenu("DueMenu")
                     await updateDocument(task.id, {
                         dueDate: Timestamp.fromDate(timeObject),
                         lists: task.lists.includes("planned") ? task.lists : arrayUnion("planned")
@@ -90,7 +91,7 @@ const DetailOptions = () => {
                 break;
             case "Repeat":
                 if (timeObject) {
-                    openInformationMenu("RepeatMenu")
+                    close && openInformationMenu("RepeatMenu")
                     await updateDocument(task.id, {
                         repeat: timeObject
                     })
@@ -164,6 +165,7 @@ const DetailOptions = () => {
                         title={detailOptionMenu[2].title}
                         menuOptions={detailOptionMenu[2].options}
                         updateSomeDates={updateSomeDates("Repeat")}
+                        showDatePicker={false}
                     />
                 </OutsideHandler>
             </div>

@@ -1,48 +1,35 @@
 import React, {useContext, useState, useRef, useMemo} from "react";
 import {useParams, Outlet, useNavigate} from "react-router-dom";
 import {tasksContext} from "../../context/tasksContext";
-import {UiContext} from "../../context/uiContext";
 import {listsContext} from "../../context/listsContext";
-import {getLogo, getTitle, getCompleteAndNotCompleteTasks, getSortedTasks} from "./utils";
+import {getTitle, getCompleteAndNotCompleteTasks, getSortedTasks} from "./utils";
 import {useReactToPrint} from 'react-to-print';
 import "./Main.css";
 
 // components
 import MainHeader from "../../components/MainHeader/MainHeader";
 import NewTask from "../../components/NewTask/NewTask";
-import CompletedHead from "../../components/CompletedHead/CompletedHead";
-import TasksList from "../../components/TasksList/TasksList";
+
 
 // icons
-import {ReactComponent as SidebarLogo} from "../../assets/images/icons/new-lists-logo.svg";
-import {ReactComponent as CloseLogo} from "../../assets/images/icons/close-logo.svg";
+import SortedOption from "../../components/SortedOption/SortedOption";
+import AllTasks from "../../components/AllTasks/AllTasks";
 
 
 const Main = () => {
     const {tasksListId} = useParams();
     const {tasks, error} = useContext(tasksContext);
     const {notInitialLists, initialLists} = useContext(listsContext);
-    const {uiState: {isLeftSidebarOpen}, uiStateHandler} = useContext(UiContext);
-    const [openCompletedTasks, setOpenCompletedTasks] = useState(false);
     const [sortOption, setSortOption] = useState({});
     const navigate = useNavigate();
-    const componentRef = useRef();
 
     const list = [...initialLists, ...notInitialLists].find(list => list.id === tasksListId);
 
+    const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
 
-    const getSortOption = (sortOption) => {
-        setSortOption(prevState => {
-            return {
-                ...prevState,
-                [tasksListId]: sortOption
-            }
-        })
-        uiStateHandler("isSortMenuOpen")
-    }
 
     const {notCompletedTasks, completedTasks} = useMemo(() => {
         if (tasks.length === 0 || !list) {
@@ -68,7 +55,7 @@ const Main = () => {
                 completedTasks
             }
         }
-    }, [tasks, list, sortOption]);
+    }, [tasks, list, sortOption, navigate]);
 
 
     return (
@@ -79,24 +66,16 @@ const Main = () => {
                     <main className="main print-area" ref={componentRef}>
                         <MainHeader
                             name={getTitle(list)}
-                            logo={!isLeftSidebarOpen ? SidebarLogo : getLogo(tasksListId)}
-                            setSortOption={getSortOption}
+                            setSortOption={setSortOption}
                             currentList={list}
                             handlePrint={handlePrint}
                         />
                         {sortOption[tasksListId] &&
-                            <div className="container is-sorted print-display-none">
-                                sorted by {sortOption[tasksListId].toLowerCase()}
-                                <CloseLogo
-                                    onClick={() => setSortOption(prevState => {
-                                        return {
-                                            ...prevState,
-                                            [tasksListId]: null
-                                        }
-                                    })}
-                                    style={{width: "14px", height: "14px", cursor: "pointer"}}
-                                />
-                            </div>
+                            <SortedOption
+                                sortedBy={sortOption[tasksListId].toLowerCase()}
+                                setSortOption={setSortOption}
+                                list={list}
+                            />
                         }
                         <NewTask
                             list={list}
@@ -107,35 +86,10 @@ const Main = () => {
                             </div>
                         )}
                         {tasks.length > 0 &&
-                            <div
-                                className="all-tasks"
-                            >
-                                {notCompletedTasks.length > 0 &&
-                                    <section className="tasks">
-                                        <div className="container">
-                                            <TasksList tasks={notCompletedTasks}/>
-                                        </div>
-                                    </section>
-                                }
-                                {completedTasks.length > 0 &&
-                                    <section className="completed-tasks">
-                                        <div className="container">
-                                            <CompletedHead
-                                                toggleTasks={setOpenCompletedTasks}
-                                                openCompletedTasks={openCompletedTasks}
-                                                num={completedTasks.length}
-                                            />
-                                            <div
-                                                className={openCompletedTasks ?
-                                                    "completed-tasks-wrapper completed-tasks-wrapper--show"
-                                                    : "completed-tasks-wrapper"}
-                                            >
-                                                <TasksList tasks={completedTasks}/>
-                                            </div>
-                                        </div>
-                                    </section>
-                                }
-                            </div>
+                            <AllTasks
+                                notCompletedTasks={notCompletedTasks}
+                                completedTasks={completedTasks}
+                            />
                         }
                     </main>
                     <Outlet/>

@@ -1,21 +1,22 @@
 import React, {useContext} from 'react';
 import {UiContext} from "../../context/uiContext";
 import {colorContext} from "../../context/colorContext";
+import {getLogo} from "../../pages/Main/utils";
 import "./MainHeader.css"
 
 // components
 import OutsideHandler from "../../hooks/useOutsideHandler";
+import ListOptions from "../ListOptions/ListOptions";
+import SortOptions from "../SortOptions/SortOptions";
 
 // icons
 import {ReactComponent as SortLogo} from "../../assets/images/icons/sort-logo.svg";
-import ListOptions from "../ListOptions/ListOptions";
-import SortOptions from "../SortOptions/SortOptions";
+import {ReactComponent as SidebarLogo} from "../../assets/images/icons/new-lists-logo.svg";
 
 
 const MainHeader = (
     {
         name,
-        logo: Logo,
         setSortOption,
         hideOptions = false,
         currentList,
@@ -23,7 +24,17 @@ const MainHeader = (
     }) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
     const {currentColor} = useContext(colorContext);
+    const Logo = !uiState.isLeftSidebarOpen ? SidebarLogo : getLogo(currentList.id);
 
+    const getSortOption = (sortOption) => {
+        setSortOption(prevState => {
+            return {
+                ...prevState,
+                [currentList.id]: sortOption
+            }
+        })
+        uiStateHandler("isSortMenuOpen")
+    }
 
     return (
         <section className="todo-header">
@@ -78,7 +89,7 @@ const MainHeader = (
                                 <SortOptions
                                     className={uiState.isSortMenuOpen ?
                                         "sort-menu sort-menu--show" : "sort-menu"}
-                                    setSortOption={setSortOption}
+                                    setSortOption={getSortOption}
                                 />
                             </div>
                         </OutsideHandler>

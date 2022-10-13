@@ -40,19 +40,19 @@ const NewTask = ({list}) => {
         })
     };
 
-    const updateSomeDates = (title) => (timeObj) => {
+    const updateSomeDates = (title) => (timeObj, close = true) => {
         switch (title) {
             case "Reminder":
                 setReminderDate(timeObj)
-                openNewTaskMenu("ReminderMenu")
+                close && openNewTaskMenu("ReminderMenu")
                 break;
             case "Due":
                 setDueDate(timeObj)
-                openNewTaskMenu("DueMenu")
+                close && openNewTaskMenu("DueMenu")
                 break;
             case "Repeat":
                 setRepeatDate(timeObj)
-                openNewTaskMenu("RepeatMenu")
+                close && openNewTaskMenu("RepeatMenu")
                 break;
             default:
                 break;
@@ -203,6 +203,7 @@ const NewTask = ({list}) => {
                                         title={detailOptionMenu[2].title}
                                         menuOptions={detailOptionMenu[2].options}
                                         updateSomeDates={updateSomeDates("Repeat")}
+                                        showDatePicker={false}
                                     />
                                 </div>
                             </OutsideHandler>
