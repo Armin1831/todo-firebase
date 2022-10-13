@@ -31,6 +31,12 @@ export const getTitle = (list) => {
 export const getCompleteAndNotCompleteTasks = (tasks, list) => {
     const completedTasks = []
     const notCompletedTasks = []
+    if (tasks.length === 0) {
+        return {
+            completedTasks,
+            notCompletedTasks
+        }
+    }
     tasks.forEach(task => {
         if (task.lists.includes(list)) {
             if (task.isCompleted) {

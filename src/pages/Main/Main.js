@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState, useRef} from "react";
+import React, {useContext, useState, useRef, useMemo} from "react";
 import {useParams, Outlet, useNavigate} from "react-router-dom";
 import {tasksContext} from "../../context/tasksContext";
 import {UiContext} from "../../context/uiContext";
@@ -25,11 +25,10 @@ const Main = () => {
     const {uiState: {isLeftSidebarOpen}, uiStateHandler} = useContext(UiContext);
     const [openCompletedTasks, setOpenCompletedTasks] = useState(false);
     const [sortOption, setSortOption] = useState({});
-    const [completedTasks, setCompletedTasks] = useState([]);
-    const [notCompletedTasks, setNotCompletedTasks] = useState([]);
     const navigate = useNavigate();
-    const list = [...initialLists, ...notInitialLists].find(list => list.id === tasksListId);
     const componentRef = useRef();
+
+    const list = [...initialLists, ...notInitialLists].find(list => list.id === tasksListId);
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -45,22 +44,31 @@ const Main = () => {
         uiStateHandler("isSortMenuOpen")
     }
 
-
-    useEffect(() => {
+    const {notCompletedTasks, completedTasks} = useMemo(() => {
+        if (tasks.length === 0 || !list) {
+            !list && navigate("/tasks/inbox")
+            return {
+                notCompletedTasks: [],
+                completedTasks: []
+            }
+        }
         if (list) {
             const {notCompletedTasks, completedTasks} =
                 getCompleteAndNotCompleteTasks(tasks, list.id);
             if (sortOption !== "") {
                 const tasks =
                     getSortedTasks([notCompletedTasks, completedTasks], sortOption[list.id])
-                setCompletedTasks(tasks[1])
-                setNotCompletedTasks(tasks[0])
+                return {
+                    notCompletedTasks: tasks[0],
+                    completedTasks: tasks[1]
+                }
             }
-            setCompletedTasks(completedTasks);
-            setNotCompletedTasks(notCompletedTasks);
+            return {
+                notCompletedTasks,
+                completedTasks
+            }
         }
-        !list && navigate("/tasks/inbox")
-    }, [tasks, list, sortOption, initialLists, notInitialLists, navigate]);
+    }, [tasks, list, sortOption]);
 
 
     return (
