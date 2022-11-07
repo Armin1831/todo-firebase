@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {UiContext} from "../../context/uiContext";
 import {tasksContext} from "../../context/tasksContext";
 import {getSearchedTasks} from "../Main/utils";
 
@@ -10,13 +9,11 @@ import CompletedHead from "../../components/CompletedHead/CompletedHead";
 
 
 // icons
-import {ReactComponent as SidebarLogo} from "../../assets/images/icons/sidebar-logo.svg";
 import {Outlet, useParams} from "react-router-dom";
 
 
 const Search = () => {
     const {search} = useParams();
-    const {uiState: {isLeftSidebarOpen}} = useContext(UiContext);
     const {tasks, error} = useContext(tasksContext);
     const [completedTasks, setCompletedTasks] = useState([]);
     const [notCompletedTasks, setNotCompletedTasks] = useState([]);
@@ -38,7 +35,7 @@ const Search = () => {
             <main className="main">
                 <MainHeader
                     name={`Searching for "${ search ?  search : " "}"`}
-                    logo={isLeftSidebarOpen ? null : SidebarLogo}
+                    currentList={null}
                     hideOptions={true}
                 />
                 {error && (

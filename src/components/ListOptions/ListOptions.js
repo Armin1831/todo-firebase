@@ -51,7 +51,7 @@ const ListOptions = ({className, currentList, handlePrint}) => {
         const initialValue = localStorage.getItem("listColor");
         const color = JSON.parse(initialValue) && JSON.parse(initialValue)[currentList.id]
         setCurrentColor(color || "#2564cf")
-    }, [currentList.id]);
+    }, [currentList.id, setCurrentColor]);
 
     const canDelete = currentList.id !== "inbox" &&
         currentList.id !== "assigned_to_me" &&

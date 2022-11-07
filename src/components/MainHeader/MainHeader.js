@@ -24,7 +24,7 @@ const MainHeader = (
     }) => {
     const {uiState, uiStateHandler} = useContext(UiContext);
     const {currentColor} = useContext(colorContext);
-    const Logo = !uiState.isLeftSidebarOpen ? SidebarLogo : getLogo(currentList.id);
+    const Logo = !currentList ? SidebarLogo : !uiState.isLeftSidebarOpen ? SidebarLogo : getLogo(currentList.id);
 
     const getSortOption = (sortOption) => {
         setSortOption(prevState => {
